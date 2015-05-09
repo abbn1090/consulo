@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder {
 
 		$lipsum = new LoremIpsumGenerator;
 
-
+/*
 		User::create([
 			'name' => 'GreatAdmin',
 			'email' => 'admin1@la.fr',
@@ -64,40 +64,43 @@ class DatabaseSeeder extends Seeder {
 
 
 		Post::create([
+           
 			'slug' => 'post-1', 
             'name' => 'post 1',
 			'content' => $lipsum->getContent(500), 
-			'user_id' => 1
+			'user_id' => 57
+            
 		]);
 
 
 
 		Post::create([
+            
 			'slug' => 'post-3', 
             'name' => 'post 3',
 			'content' => $lipsum->getContent(500), 
-			'user_id' => 2
+			'user_id' => 57
 		]);
 
-
+*/
 		PostTag::create([
-			'post_id' => 1,
-			'tag_id' => 1
-		]);
-
-		PostTag::create([
-			'post_id' => 1,
-			'tag_id' => 2
+			'post_id' => 9,
+			'tag_id' => 29
 		]);
 
 		PostTag::create([
-			'post_id' => 2,
-			'tag_id' => 1
+			'post_id' => 9,
+			'tag_id' => 29
 		]);
 
 		PostTag::create([
-			'post_id' => 2,
-			'tag_id' => 2
+			'post_id' => 9,
+			'tag_id' => 29
+		]);
+
+		PostTag::create([
+			'post_id' => 9,
+			'tag_id' => 29
 		]);
 
 		
@@ -107,14 +110,14 @@ class DatabaseSeeder extends Seeder {
 
 		Comment::create([
 			'content' => $lipsum->getContent(200), 
-			'user_id' => 2,
-			'post_id' => 1
+			'user_id' => 57,
+			'post_id' => 9
 		]);
 
 		Comment::create([
 			'content' => $lipsum->getContent(200), 
-			'user_id' => 2,
-			'post_id' => 2
+			'user_id' => 57,
+			'post_id' => 9
 		]);
 
 	
