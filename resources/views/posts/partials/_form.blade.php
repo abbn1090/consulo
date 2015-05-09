@@ -13,6 +13,21 @@
     {!! Form::text('content') !!}
 </div>
 
+<!-- Tags Form Input -->
+<div class="form-group">
+	{!! Form::label('tag_list', "Tags:") !!}
+	{!! Form::select('tag_list[]', $tags, null, ['id' => 'tag_list', 'class' => 'form-control', 'multiple']) !!}
+</div>
+
 <div class="form-group">
     {!! Form::submit($submit_text, ['class'=>'btn primary']) !!}
 </div>
+
+
+@section('scriptArea')
+	<script>
+		$("#tag_list").select2({
+			placeholder: 'Chose a tag'
+		});
+	</script>
+@endsection

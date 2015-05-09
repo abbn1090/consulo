@@ -1,13 +1,16 @@
 <?php namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Auth;
 use Input;
 use Redirect;
-
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Laracasts\Flash\Flash;
+use Session;
 
 class PostsController extends Controller {
 
@@ -40,8 +43,8 @@ class PostsController extends Controller {
 	public function create()
 	{
 		//
-       // $tags = Tag::lists('name', 'id');
-        return view('posts.create'/*, compact('tags')*/);
+        $tags = Tag::lists('tag', 'id');
+        return view('posts.create', compact('tags'));
 	}
 
 
@@ -67,27 +70,36 @@ class PostsController extends Controller {
 	public function edit(Post $post)
 	{
 		//
-        return view('posts.edit',compact('post'));
+		$tags = Tag::lists('tag', 'id');
+		return view('posts.edit', compact('post', 'tags'));
+        
 	}
 
 
 
     public function store(Request $request)
     {
-        $this->validate($request, $this->rules);
+        $this->validate($request, $this->rules);        
         
-        $input = Input::all();
-        Post::create( $input );
+		$posts = new Post($request->all());
 
-        return Redirect::route('posts.index')->with('message', 'Post created');
+		Auth::user()->posts()->save($posts);
+
+		$posts->tags()->attach($request->input('tag_list'));
+        
+		return Redirect::route('posts.index')->with('message', 'Post created');
+        
+      
     }
  
     public function update(Post $post, Request $request)
     {
-        $this->validate($request, $this->rules);
         
-        $input = array_except(Input::all(), '_method');
-        $post->update($input);
+        $posts = Post::where('id', '=', $post->id)->firstOrFail();
+
+		$posts->update($request->all());
+
+		$posts->tags()->sync($request->input('tag_list'));
 
         return Redirect::route('posts.show', $post->slug)->with('message', 'post updated.');
     }

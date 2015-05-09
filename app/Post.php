@@ -5,7 +5,7 @@ use App\Presenters\DatePresenter;
 
 class Post extends Model  {
 
-	use DatePresenter;
+	//use DatePresenter;
     
 	/**
 	 * The database table used by the model.
@@ -13,7 +13,8 @@ class Post extends Model  {
 	 * @var string
 	 */
 	protected $table = 'posts';
-    protected $guarded = [];
+    protected $fillable = ['name', 'slug', 'content','tag', 'published_at'];
+   // protected $guarded = [];
 	/**
 	 * One to Many relation
 	 *

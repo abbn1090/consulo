@@ -2,19 +2,31 @@
 @extends('app')
  
 @section('content')
-    <h2>{{ $post->slug }}</h2>
-    
-        <ul>
-                <li>
-                       {{ $post->name }} 
-                    {{ $post->content }}    
-                           
-                </li>
-            
-        </ul>
-    
- 
-    <p>
-        {!! link_to_route('posts.index', 'Back to posts') !!} 
-    </p>
+
+
+
+	<div class="row">
+			<article class="col-md-12">
+				<header>
+					<h1> {{ $post->name }} </h1>
+					<a >{{ $post->slug }}</a>
+				</header>
+				{{ $post->content }} 
+
+				@unless($post->tags->isEmpty())
+					<h6>Tags: </h6>
+					<ul>
+						@foreach($post->tags as $tag)
+							<li class="list-inline">{{ $tag->tag }}</li>
+						@endforeach
+					</ul>
+				@endunless
+			</article>
+	</div>
+
+
+
+
 @endsection
+
+

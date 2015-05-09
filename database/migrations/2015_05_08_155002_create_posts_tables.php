@@ -23,6 +23,7 @@ class CreatePostsTables extends Migration {
             $table->integer('down_number')->unsigned();
             $table->integer('comment_number')->unsigned();
 			$table->integer('user_id')->unsigned();
+            
 		});
 
 		Schema::table('posts', function(Blueprint $table) {
