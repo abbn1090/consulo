@@ -68,7 +68,8 @@ class DatabaseSeeder extends Seeder {
 			'slug' => 'post-1', 
             'name' => 'post 1',
 			'content' => $lipsum->getContent(500), 
-			'user_id' => 57
+			'user_id' => 1,
+            
             
 		]);
 
@@ -79,29 +80,21 @@ class DatabaseSeeder extends Seeder {
 			'slug' => 'post-3', 
             'name' => 'post 3',
 			'content' => $lipsum->getContent(500), 
-			'user_id' => 57
+			'user_id' => 1,
+            
 		]);
 
-*/
-		PostTag::create([
-			'post_id' => 9,
-			'tag_id' => 29
-		]);
 
 		PostTag::create([
-			'post_id' => 9,
-			'tag_id' => 29
+			'post_id' => 1,
+			'tag_id' => 1
 		]);
 
 		PostTag::create([
-			'post_id' => 9,
-			'tag_id' => 29
+			'post_id' => 2,
+			'tag_id' => 1
 		]);
 
-		PostTag::create([
-			'post_id' => 9,
-			'tag_id' => 29
-		]);
 
 		
 
@@ -110,16 +103,16 @@ class DatabaseSeeder extends Seeder {
 
 		Comment::create([
 			'content' => $lipsum->getContent(200), 
-			'user_id' => 57,
-			'post_id' => 9
+			'user_id' => 1,
+			'post_id' => 1
 		]);
 
 		Comment::create([
 			'content' => $lipsum->getContent(200), 
-			'user_id' => 57,
-			'post_id' => 9
+			'user_id' => 1,
+			'post_id' => 1
 		]);
-
+*/
 	
 
 	}

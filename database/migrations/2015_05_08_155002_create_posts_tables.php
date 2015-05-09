@@ -14,7 +14,7 @@ class CreatePostsTables extends Migration {
     	public function up()
 	{
 		Schema::create('posts', function(Blueprint $table) {
-			$table->increments('id');
+			$table->increments('id')->unsigned();;
 			$table->timestamps();
             $table->string('name', 255);
 			$table->string('slug', 255)->unique();
@@ -23,7 +23,7 @@ class CreatePostsTables extends Migration {
             $table->integer('down_number')->unsigned();
             $table->integer('comment_number')->unsigned();
 			$table->integer('user_id')->unsigned();
-            $table->integer('tag_id')->unsigned();
+            $table->timestamp('published_at');
             
 		});
 
@@ -32,11 +32,13 @@ class CreatePostsTables extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-        Schema::table('posts', function(Blueprint $table) {
+       /*
+            Schema::table('posts', function(Blueprint $table) {
 			$table->foreign('tag_id')->references('id')->on('tags')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
+        */
 	}
     
 	/**
@@ -49,10 +51,7 @@ class CreatePostsTables extends Migration {
 		Schema::table('posts', function(Blueprint $table) {
 			$table->dropForeign('posts_user_id_foreign');
 		});	
-        Schema::table('posts', function(Blueprint $table) {
-			$table->dropForeign('posts_tag_id_foreign');
-		});	
-
+       
 		Schema::drop('posts');
 	}
 

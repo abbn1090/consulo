@@ -13,8 +13,8 @@ class Post extends Model  {
 	 * @var string
 	 */
 	protected $table = 'posts';
-    protected $fillable = ['name', 'slug', 'content'];
-    //protected $dates = ['published_at'];
+    protected $fillable = ['name', 'slug', 'content', 'tag_id', 'published_at'];
+    protected $dates = ['published_at'];
 	/**
 	 * One to Many relation
 	 *
@@ -45,7 +45,7 @@ class Post extends Model  {
 		return $this->hasMany('App\Comment');
 	}
     
-    /*
+    
     public function scopePublished($query)
 	{
 		$query->where('published_at', '<=', Carbon::now());
@@ -72,6 +72,6 @@ class Post extends Model  {
     
   
     
-    */
+    
 
 }
