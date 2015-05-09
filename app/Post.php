@@ -6,14 +6,14 @@ use App\Presenters\DatePresenter;
 class Post extends Model  {
 
 	use DatePresenter;
-
+    
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
 	protected $table = 'posts';
-
+    protected $guarded = [];
 	/**
 	 * One to Many relation
 	 *
