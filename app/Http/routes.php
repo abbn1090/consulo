@@ -22,7 +22,7 @@ Route::get('home', 'HomeController@index');
 
 
 Route::bind('tags',function($value, $route) {
-        return App\Tag::whereTag($value)->first();
+        return App\Tag::whereId($value)->first();
 });
 
 Route::bind('posts',function($value, $route) {

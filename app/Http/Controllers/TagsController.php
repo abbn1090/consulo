@@ -3,13 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Tag;
-use Illuminate\Http\Request;
-
 use App\Post;
-use Auth;
-use Input;
-use Redirect;
-use Session;
 
 class TagsController extends Controller {
 
@@ -52,10 +46,10 @@ class TagsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show_by_tag($id)
+	public function show(Tag $tag)
 	{
-		//
-         $posts = Tag::find($id)->posts();
+		//  
+        $posts = $tag->posts;;
         return view('posts.index',compact('posts'));
 	}
 

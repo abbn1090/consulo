@@ -15,7 +15,7 @@
 						@foreach($post->tags as $tag)
 							 
           
-                        <p><a href="{{ route('tags.show', [tag -> $tag]) }}">{{ $tag->tag }}</a></p>
+                        <p><a href="{{ route('tags.show', [$tag->id]) }}">{{ $tag->tag }}</a></p>
 						@endforeach
 					</h6>
 				@endunless
@@ -23,7 +23,7 @@
 				{{ $post->content }} 
 
 			
-                  <section id="comments">
+<section id="comments">
     <h3 class="title">Comments</h3>
     @if (count($post->comments) === 0)
       <p>No comments yet on this post.</p>
@@ -35,7 +35,7 @@
         </div>
       @endforeach
     @endif
-  </section>
+</section>
 			</article>
 	</div>
 
