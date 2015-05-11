@@ -22,7 +22,7 @@ Route::get('home', 'HomeController@index');
 
 
 Route::bind('tags',function($value, $route) {
-        return App\Tag::whereSlug($value)->first();
+        return App\Tag::whereTag($value)->first();
 });
 
 Route::bind('posts',function($value, $route) {
@@ -38,6 +38,7 @@ Route::resource('tags','TagsController');
 Route::resource('posts','PostsController');
 
 Route::resource('comment','PostsController');
+
 
 
 Route::controllers([

@@ -41,5 +41,10 @@
 	},
 	"config": {
 		"preferred-install": "dist"
-	}
+	},
+    "require": {
+  "lanz/laravel-commentable": "~2.0",
+        "illuminate/html":"5.0.*"
+        
+    }
 }

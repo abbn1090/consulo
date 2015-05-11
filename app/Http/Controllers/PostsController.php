@@ -34,6 +34,8 @@ class PostsController extends Controller {
         $posts = Post::all();
         return view('posts.index',compact('posts'));
 	}
+    
+    
 
 	/**
 	 * Show the form for creating a new resource.

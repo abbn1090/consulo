@@ -1,11 +1,13 @@
 <?php namespace App;
 
+use Lanz\Commentable\Commentable;
 use Illuminate\Database\Eloquent\Model;
 use App\Presenters\DatePresenter;
 
 class Post extends Model  {
 
 	//use DatePresenter;
+    use Commentable;
     
 	/**
 	 * The database table used by the model.
@@ -70,6 +72,17 @@ class Post extends Model  {
 		return $this->tags->lists('id');
 	}
     
+     public function getNumCommentsStr()
+      {
+        $num = $this->comments()->count();
+
+        if ($num == 1)
+        {
+          return '1 comment';
+        }
+
+        return $num . ' comments';
+      }
   
     
     

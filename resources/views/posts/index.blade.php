@@ -2,7 +2,7 @@
  
 @section('content')
     <h2>posts</h2>
- 
+
     @if ( !$posts->count() )
         You have no posts
     @else
@@ -17,6 +17,10 @@
                             {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
                         
                     {!! Form::close() !!}
+                      <footer class="text-muted">
+    <p>Posted {{ $post->created_at->diffForHumans() }}</p>
+    <p><a href="{{ route('posts.show', $post->slug) }}">{{ $post->getNumCommentsStr() }}</a></p>
+  </footer>
                 </li>
             @endforeach
         </ul>
