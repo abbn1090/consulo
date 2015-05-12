@@ -43,8 +43,10 @@
 		"preferred-install": "dist"
 	},
     "require": {
-  "lanz/laravel-commentable": "~2.0",
-        "illuminate/html":"5.0.*"
+        "lanz/laravel-commentable": "~2.0",
+        "illuminate/html":"5.0.*",
+        "rtconner/laravel-likeable": "~1.0.3"
+        
         
     }
 }

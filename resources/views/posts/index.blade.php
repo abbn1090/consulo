@@ -20,6 +20,7 @@
                       <footer class="text-muted">
     <p>Posted {{ $post->created_at->diffForHumans() }}</p>
     <p><a href="{{ route('posts.show', $post->slug) }}">{{ $post->getNumCommentsStr() }}</a></p>
+    <p><a href="{{ route('posts.show', $post->slug) }}">{{ $post->likeCount }}</a>likes</p>
   </footer>
                 </li>
             @endforeach

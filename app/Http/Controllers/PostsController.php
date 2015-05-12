@@ -112,4 +112,14 @@ class PostsController extends Controller {
 
         return Redirect::route('posts.index')->with('message', 'post deleted.');
     }
+    
+     public function like(Post $post)
+    {
+               
+        $post->like();
+         //$post->likes->likable_id = $post->id;
+         $post->save();
+        return Redirect::route('posts.index');
+    }
+    
 }

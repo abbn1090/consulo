@@ -2,8 +2,17 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Post;
+use App\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\RedirectResponse;
+
+use Redirect;
+
+
+
+
 
 class CommentsController extends Controller {
 
@@ -12,6 +21,7 @@ class CommentsController extends Controller {
 	 *
 	 * @return Response
 	 */
+    
 	public function index()
 	{
 		//
@@ -25,6 +35,8 @@ class CommentsController extends Controller {
 	public function create()
 	{
 		//
+
+   
 	}
 
 	/**
@@ -32,9 +44,27 @@ class CommentsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request, Post $post)
 	{
 		//
+       // $this->validate($request, $this->rules);        
+        
+	
+        
+        
+      //  $posts = Post::findOrFail($post->id);
+
+        $comment = new Comment();
+        $comment->user_id = \Auth::id();
+        $comment->body = $request->input('body');
+        
+
+        //Auth::user()->
+        $post->comments()->save($comment);
+
+        // go back to the post
+
+        return Redirect::route('posts.show', $post->slug);
 	}
 
 	/**

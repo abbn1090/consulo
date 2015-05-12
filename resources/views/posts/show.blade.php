@@ -21,6 +21,8 @@
 				@endunless
 				</header>
 				{{ $post->content }} 
+                
+                 <p><a href="{{ route('postlike', $post->slug) }}">like</a></p>
 
 			
 <section id="comments">
@@ -36,6 +38,16 @@
       @endforeach
     @endif
 </section>
+                
+                  <section>
+    <h3 class="title">Add a comment</h3>
+         
+    {!! Form::open(array('route' => ['posts.comment.store', $post->slug], 'class' => 'form')) !!}
+       
+        @include('posts/partials/_formC', ['submit_text' => 'Create Task'])
+    {!! Form::close() !!}
+     
+  </section>
 			</article>
 	</div>
 

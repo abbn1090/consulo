@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Lanz\Commentable\Commentable;
+use Conner\Likeable\LikeableTrait;
 use Illuminate\Database\Eloquent\Model;
 use App\Presenters\DatePresenter;
 
@@ -8,7 +9,7 @@ class Post extends Model  {
 
 	//use DatePresenter;
     use Commentable;
-    
+    use LikeableTrait;
 	/**
 	 * The database table used by the model.
 	 *

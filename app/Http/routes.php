@@ -11,15 +11,22 @@
 |
 */
 
-
 Route::model('posts', 'Post');
 Route::model('tags', 'Tag');
 Route::model('comments', 'Comment');
 
+
+
+
+
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
-
+route::get('/post/{slug}/like', array(
+  'as' => 'postlike',
+  'uses' => 'PostsController@like'
+));
 
 Route::bind('tags',function($value, $route) {
         return App\Tag::whereId($value)->first();
@@ -30,14 +37,16 @@ Route::bind('posts',function($value, $route) {
 });
 
 Route::bind('comments',function($value, $route) {
-        return App\Comment::whereSlug($value)->first();
+        return App\Comment::whereId($value)->first();
 });
 
 Route::resource('tags','TagsController');
 
+
+
 Route::resource('posts','PostsController');
 
-Route::resource('comment','PostsController');
+Route::resource('posts.comment','CommentsController');
 
 
 

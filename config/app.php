@@ -137,6 +137,7 @@ return [
 		'Illuminate\View\ViewServiceProvider',
         'Illuminate\Html\HtmlServiceProvider',
         'Lanz\Commentable\CommentableServiceProvider',
+        'Conner\Likeable\LikeableServiceProvider',
 
 		/*
 		 * Application Service Providers...
