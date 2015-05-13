@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder {
 
 		$lipsum = new LoremIpsumGenerator;
 
-/*
+
 		User::create([
 			'name' => 'GreatAdmin',
 			'email' => 'admin1@la.fr',
@@ -112,7 +112,7 @@ class DatabaseSeeder extends Seeder {
 			'user_id' => 1,
 			'post_id' => 1
 		]);
-*/
+
 	
 
 	}

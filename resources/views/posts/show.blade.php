@@ -22,7 +22,7 @@
 				</header>
 				{{ $post->content }} 
                 
-                 <p><a href="{{ route('postlike', $post->slug) }}">like</a></p>
+                 <p><a href="{{ route('postlike', [$post->slug]) }}">like</a></p>
 
 			
 <section id="comments">

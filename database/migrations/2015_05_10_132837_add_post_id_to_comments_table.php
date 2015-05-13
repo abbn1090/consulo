@@ -20,7 +20,10 @@ class AddPostIdToCommentsTable extends Migration {
             $table->index('post_id');
             
 
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('post_id')->references('id')->on('posts')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            
         
 		});
 	}
@@ -35,7 +38,10 @@ class AddPostIdToCommentsTable extends Migration {
 		Schema::table('comments', function(Blueprint $table)
 		{
 			//
-            $table->dropColumn('post_id');
+            //$table->dropColumn('post_id');
+            
+			$table->dropForeign('comments_post_id_foreign');
+		
 		});
 	}
 

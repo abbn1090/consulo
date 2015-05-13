@@ -116,10 +116,12 @@ class PostsController extends Controller {
      public function like(Post $post)
     {
                
-        $post->like();
-         //$post->likes->likable_id = $post->id;
+         $post->like();
          $post->save();
-        return Redirect::route('posts.index');
+         
+        return Redirect::route('posts.show', $post->slug);
+        
+       //  return Redirect::route('posts.index');
     }
     
 }

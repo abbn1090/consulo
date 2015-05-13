@@ -23,7 +23,8 @@ Route::model('comments', 'Comment');
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
-route::get('/post/{slug}/like', array(
+//Route::put('/post/{Slug}/like', 'PostsController@like');
+route::get('/posts/{posts}/like', array(
   'as' => 'postlike',
   'uses' => 'PostsController@like'
 ));

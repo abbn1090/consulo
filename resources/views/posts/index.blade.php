@@ -13,8 +13,9 @@
                         <a href="{{ route('posts.show', $post->slug) }}">{{ $post->name }}</a>
                       
                     
-                    {!! link_to_route('posts.edit', 'Edit', array($post->slug), array('class' => 'btn btn-info')) !!}
-                            {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
+                    {!! link_to_route('posts.edit', 'Edit', array($post->slug), array('class' => '')) !!}
+                    {!! link_to_route('posts.edit', 'Edit', array($post->slug), array('class' => '')) !!}
+                            {!! Form::submit('Delete', array('class' => '')) !!}
                         
                     {!! Form::close() !!}
                       <footer class="text-muted">
