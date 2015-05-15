@@ -1,6 +1,6 @@
 <!-- /resources/views/projects/partials/_form.blade.php -->
 <div class="form-group">
-    {!! Form::label('name', 'Name:') !!}
+    {!! Form::label('name', 'title:') !!}
     {!! Form::text('name') !!}
 </div>
 <div class="form-group">
@@ -10,7 +10,8 @@
 
 <div class="form-group">
     {!! Form::label('content', 'Content:') !!}
-    {!! Form::text('content') !!}
+    
+    {!! Form::textarea('content') !!}
 </div>
 
 <!-- Tags Form Input -->

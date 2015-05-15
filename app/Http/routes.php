@@ -20,13 +20,28 @@ Route::model('comments', 'Comment');
 
 
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'PostsController@index');
 
-Route::get('home', 'HomeController@index');
 //Route::put('/post/{Slug}/like', 'PostsController@like');
+
+route::get('/posts/bylikes', array(
+  'as' => 'postsbylike',
+  'uses' => 'PostsController@indexbylikes'
+));
+
+route::get('/tags/{tags}/bylikes', array(
+  'as' => 'poststagbylike',
+  'uses' => 'TagsController@indexbylikes'
+));
+
+
 route::get('/posts/{posts}/like', array(
   'as' => 'postlike',
   'uses' => 'PostsController@like'
+));
+route::get('/posts/{posts}/unlike', array(
+  'as' => 'postunlike',
+  'uses' => 'PostsController@unlike'
 ));
 
 Route::bind('tags',function($value, $route) {

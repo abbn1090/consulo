@@ -15,14 +15,24 @@
 						@foreach($post->tags as $tag)
 							 
           
-                        <p><a href="{{ route('tags.show', [$tag->id]) }}">{{ $tag->tag }}</a></p>
+                        <a href="{{ route('tags.show', [$tag->id]) }}">{{ $tag->tag }}</a>
 						@endforeach
 					</h6>
 				@endunless
 				</header>
 				{{ $post->content }} 
+                @if($post->liked(Auth::user()->id))
+                <p><a href="{{ route('postunlike', [$post->slug]) }}">unlike</a></p>
+                @else
+                <p><a href="{{ route('postlike', [$post->slug]) }}">like</a></p>
+                @endif
+                 
                 
-                 <p><a href="{{ route('postlike', [$post->slug]) }}">like</a></p>
+                 <p>
+    <a href="{{ route('posts.show', $post->slug) }}">{{ $post->likeCount }} likes</a>
+    <a href="{{ route('posts.show', $post->slug) }}">{{ $post->getNumCommentsStr() }}</a>
+    
+                          </p>
 
 			
 <section id="comments">
@@ -44,7 +54,7 @@
          
     {!! Form::open(array('route' => ['posts.comment.store', $post->slug], 'class' => 'form')) !!}
        
-        @include('posts/partials/_formC', ['submit_text' => 'Create Task'])
+        @include('posts/partials/_formC', ['submit_text' => 'commenter'])
     {!! Form::close() !!}
      
   </section>

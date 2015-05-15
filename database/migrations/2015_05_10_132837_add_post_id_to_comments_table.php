@@ -35,14 +35,7 @@ class AddPostIdToCommentsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('comments', function(Blueprint $table)
-		{
-			//
-            //$table->dropColumn('post_id');
-            
-			$table->dropForeign('comments_post_id_foreign');
 		
-		});
 	}
 
 }

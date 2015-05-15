@@ -31,8 +31,23 @@ class PostsController extends Controller {
 	public function index()
 	{
 		//
-        $posts = Post::all();
-        return view('posts.index',compact('posts'));
+        $tags = Tag::all();
+        $posts = Post::all()->sortByDesc(function($post)
+{
+    return $post->published_at;
+});
+        return view('posts.index',compact('posts','tags'));
+	}
+    
+    public function indexbylikes()
+	{
+		//
+        $tags = Tag::all();
+        $posts = Post::all()->sortByDesc(function($post)
+{
+    return $post->likeCount ;//published_at;
+});//::orderBy('published_at', 'asc');;
+        return view('posts.index',compact('posts','tags'));
 	}
     
     
@@ -60,6 +75,7 @@ class PostsController extends Controller {
 	public function show(Post $post)
 	{
 		//
+        
         return view('posts.show',compact('post'));
 	}
 
@@ -72,9 +88,14 @@ class PostsController extends Controller {
 	public function edit(Post $post)
 	{
 		//
+        
+    if (Auth::check() && $post->user_id == Auth::id()) {  
+     
+    
 		$tags = Tag::lists('tag', 'id');
 		return view('posts.edit', compact('post', 'tags'));
-        
+    }else 
+        return redirect()->back();//->with('data', ['some kind of data']);
 	}
 
 
@@ -116,7 +137,17 @@ class PostsController extends Controller {
      public function like(Post $post)
     {
                
-         $post->like();
+         $post->like(Auth::user()->id);
+         $post->save();
+         
+        return Redirect::route('posts.show', $post->slug);
+        
+       //  return Redirect::route('posts.index');
+    }
+    public function unlike(Post $post)
+    {
+               
+         $post->unlike(Auth::user()->id);
          $post->save();
          
         return Redirect::route('posts.show', $post->slug);

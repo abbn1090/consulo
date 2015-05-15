@@ -15,21 +15,29 @@ class CreatePostTagTables extends Migration {
 	{
 		Schema::create('post_tag', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('post_id')->unsigned();
-			$table->integer('tag_id')->unsigned();
+			
+			
+            
+            
+            
+            $table->integer('post_id')->unsigned()->index();
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade')
+                ->onUpdate('cascade');;
+            
+            
+
+			
+            
+            $table->integer('tag_id')->unsigned()->index();
+            $table->foreign('tag_id')->references('id')->on('tags');
+
+			$table->timestamps();
+            
+            
+            
 		});
 
-		Schema::table('post_tag', function(Blueprint $table) {
-			$table->foreign('post_id')->references('id')->on('posts')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
-
-		Schema::table('post_tag', function(Blueprint $table) {
-			$table->foreign('tag_id')->references('id')->on('tags')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
+	
 	}
 
 	/**
@@ -39,13 +47,7 @@ class CreatePostTagTables extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('post_tag', function(Blueprint $table) {
-			$table->dropForeign('post_tag_post_id_foreign');
-		});
 		
-		Schema::table('post_tag', function(Blueprint $table) {
-			$table->dropForeign('post_tag_tag_id_foreign');
-		});
 
 		Schema::drop('post_tag');
 	}

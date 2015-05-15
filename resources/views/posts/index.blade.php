@@ -2,27 +2,72 @@
  
 @section('content')
     <h2>posts</h2>
+<div class="tabs">
+    <ul class="tab-links">
+        
+        
+          @if(isset($t))
+        <p><a href="{{ route('tags.show', [$t->id]) }}">most recent</a></p> 
+            
+    
+        @else
+        <p><a href="{{ route('posts.index') }}">most recent</a></p>
+        
+        @endif
+        
+        
+        
+        @if(isset($t))
+        <p><a href="{{ route('poststagbylike', [$t->id]) }}">most liked</a></p>
+        
+    
+        @else
+        <p><a href="{{ route('postsbylike') }}">most liked</a></p>
+        
+        @endif
+        
+        
+      
+    </ul>
 
+
+ <table style="width:100%">
+       
+  <tr>
+    <th>
+        @foreach( $tags as $tag )
+    <p><a href="{{ route('tags.show', [$tag->id]) }}">{{ $tag->tag }}</a></p>  
+        @endforeach
+      
+    </th>
+    <th>
+      
+      
     @if ( !$posts->count() )
         You have no posts
     @else
         <ul>
+            
             @foreach( $posts as $post )
                 <li>
                     {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.destroy', $post->slug))) !!}
                         <a href="{{ route('posts.show', $post->slug) }}">{{ $post->name }}</a>
                       
                     
-                    {!! link_to_route('posts.edit', 'Edit', array($post->slug), array('class' => '')) !!}
+                    @if(Auth::check() && Auth::user()->id == $post->user->id)
                     {!! link_to_route('posts.edit', 'Edit', array($post->slug), array('class' => '')) !!}
                             {!! Form::submit('Delete', array('class' => '')) !!}
                         
                     {!! Form::close() !!}
+                    
+                    @endif
                       <footer class="text-muted">
     <p>Posted {{ $post->created_at->diffForHumans() }}</p>
-    <p><a href="{{ route('posts.show', $post->slug) }}">{{ $post->getNumCommentsStr() }}</a></p>
-    <p><a href="{{ route('posts.show', $post->slug) }}">{{ $post->likeCount }}</a>likes</p>
-  </footer>
+   <p>
+    <a href="{{ route('posts.show', $post->slug) }}">{{ $post->getNumCommentsStr() }}</a>
+    <a href="{{ route('posts.show', $post->slug) }}">{{ $post->likeCount }} likes</a>
+                          </p>
+    </footer>
                 </li>
             @endforeach
         </ul>
@@ -34,3 +79,9 @@
 @endsection
 
 
+  
+    </th>
+  </tr>
+
+</table> 
+    

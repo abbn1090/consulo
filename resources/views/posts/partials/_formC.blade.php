@@ -1,9 +1,11 @@
 
 
 <div class="form-group">
-    {!! Form::label('body', 'comment:') !!}
-    {!! Form::text('body') !!}
-</div>
+    <p>{!! Form::label('body', 'comment:') !!}
+    </p>
+    {!! Form::textarea('body') !!}
+
+    </div>
 
 
 
