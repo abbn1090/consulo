@@ -21,10 +21,12 @@
 				@endunless
 				</header>
 				{{ $post->content }} 
+                @if(Auth::check())
                 @if($post->liked(Auth::user()->id))
                 <p><a href="{{ route('postunlike', [$post->slug]) }}">unlike</a></p>
                 @else
                 <p><a href="{{ route('postlike', [$post->slug]) }}">like</a></p>
+                @endif
                 @endif
                  
                 

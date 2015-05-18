@@ -56,6 +56,7 @@ Route::bind('comments',function($value, $route) {
         return App\Comment::whereId($value)->first();
 });
 
+
 Route::resource('tags','TagsController');
 
 
