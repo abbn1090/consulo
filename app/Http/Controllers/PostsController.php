@@ -60,8 +60,9 @@ class PostsController extends Controller {
 	public function create()
 	{
 		//
-        $tags = Tag::lists('tag', 'id');
-        return view('posts.create', compact('tags'));
+        $tags = Tag::all();
+        $ts = Tag::lists('tag', 'id');
+        return view('posts.create', compact('ts','tags'));
 	}
 
 
@@ -75,8 +76,8 @@ class PostsController extends Controller {
 	public function show(Post $post)
 	{
 		//
-        
-        return view('posts.show',compact('post'));
+        $tags =Tag::all();
+        return view('posts.show',compact('post','tags'));
 	}
 
 	/**
@@ -105,6 +106,7 @@ class PostsController extends Controller {
         $this->validate($request, $this->rules);        
         
 		$posts = new Post($request->all());
+       // $posts->slug = $request->input('name');
 
 		Auth::user()->posts()->save($posts);
 

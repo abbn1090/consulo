@@ -31,16 +31,7 @@
     </ul>
 
 
- <table style="width:100%">
-       
-  <tr>
-    <th>
-        @foreach( $tags as $tag )
-    <p><a href="{{ route('tags.show', [$tag->id]) }}">{{ $tag->tag }}</a></p>  
-        @endforeach
-      
-    </th>
-    <th>
+ 
       
       
     @if ( !$posts->count() )
@@ -80,8 +71,5 @@
 
 
   
-    </th>
-  </tr>
-
-</table> 
+   
     

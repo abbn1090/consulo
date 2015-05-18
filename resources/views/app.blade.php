@@ -52,9 +52,23 @@
 			</div>
 		</div>
 	</nav>
-
+<table style="width:100%">
+       
+  <tr>
+    <th>
+        @foreach( $tags as $tag )
+    <p><a href="{{ route('tags.show', [$tag->id]) }}">{{ $tag->tag }}</a></p>  
+        @endforeach
+      
+    </th>
+    <th>
+        
 	@yield('content')
 
+         </th>
+  </tr>
+
+</table> 
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>

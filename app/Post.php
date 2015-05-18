@@ -16,7 +16,7 @@ class Post extends Model  {
 	 * @var string
 	 */
 	protected $table = 'posts';
-    protected $fillable = ['name', 'slug', 'content', 'tag_id', 'published_at'];
+    protected $fillable = ['name', 'content', 'tag_id', 'published_at'];
     protected $dates = ['published_at'];
 	/**
 	 * One to Many relation
