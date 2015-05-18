@@ -16,7 +16,7 @@ class Post extends Model  {
 	 * @var string
 	 */
 	protected $table = 'posts';
-    protected $fillable = ['name', 'content', 'tag_id', 'published_at'];
+    protected $fillable = ['name','slug', 'content', 'tag_id', 'published_at'];
     protected $dates = ['published_at'];
 	/**
 	 * One to Many relation
@@ -79,10 +79,10 @@ class Post extends Model  {
 
         if ($num == 1)
         {
-          return '1 comment';
+          return '1 commentaire';
         }
 
-        return $num . ' comments';
+        return $num . ' commentaires';
       }
   
     

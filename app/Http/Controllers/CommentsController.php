@@ -27,9 +27,11 @@ class CommentsController extends Controller {
 			['except' => ['index', 'show']]
 		);
 	   }
-	public function index()
+	public function index(Post $post)
 	{
 		//
+         return Redirect::route('posts.show', $post->slug);
+	
 	}
 
 	/**
@@ -78,9 +80,10 @@ class CommentsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Post $post)
 	{
 		//
+        return Redirect::route('posts.show', $post->slug);
 	}
 
 	/**

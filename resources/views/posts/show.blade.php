@@ -23,28 +23,29 @@
 				{{ $post->content }} 
                 @if(Auth::check())
                 @if($post->liked(Auth::user()->id))
-                <p><a href="{{ route('postunlike', [$post->slug]) }}">unlike</a></p>
+                <p><a href="{{ route('postunlike', [$post->slug]) }}">Je n’aime plus</a></p>
                 @else
-                <p><a href="{{ route('postlike', [$post->slug]) }}">like</a></p>
+                <p><a href="{{ route('postlike', [$post->slug]) }}">J’aime</a></p>
                 @endif
                 @endif
                  
                 
                  <p>
-    <a href="{{ route('posts.show', $post->slug) }}">{{ $post->likeCount }} likes</a>
-    <a href="{{ route('posts.show', $post->slug) }}">{{ $post->getNumCommentsStr() }}</a>
+    <a href="{{ route('posts.show', $post->slug) }}">{{ $post->likeCount }} personnes aiment ça</a>
+    </p>
+                <p>
+                     <a href="{{ route('posts.show', $post->slug) }}">{{ $post->getNumCommentsStr() }}</a>
     
                           </p>
 
 			
 <section id="comments">
-    <h3 class="title">Comments</h3>
     @if (count($post->comments) === 0)
-      <p>No comments yet on this post.</p>
+      <p>Pas encore de commentaires !</p>
     @else
       @foreach ($post->comments as $comment)
         <div class="comment">
-          <p><strong>{{ $comment->user->name }} says...</strong></p>
+          <p><strong>{{ $comment->user->name }} :</strong></p>
           <blockquote>{{ $comment->body }}</blockquote>
         </div>
       @endforeach
@@ -52,7 +53,7 @@
 </section>
                 
                   <section>
-    <h3 class="title">Add a comment</h3>
+    <h3 class="title">Laisser un commentaire : </h3>
          
     {!! Form::open(array('route' => ['posts.comment.store', $post->slug], 'class' => 'form')) !!}
        

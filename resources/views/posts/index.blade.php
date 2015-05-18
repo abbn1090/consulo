@@ -1,7 +1,217 @@
+
+			
+			
+							
+				<div class="ui top attached tabular menu">
+					<a class="active item" data-tab="first">plus récent</a>
+					<a class="item" data-tab="second">plus actif</a>
+				  </div>
+				<div class="ui bottom attached active tab segment" data-tab="first">
+
+					<div class="ui attached segment">
+						
+						<div class="ui form">
+							
+						  <div class="field">
+						  
+						    <label>Titre</label>
+							<input type="text" placeholder="Titre">
+							
+							<label>Intervention</label>
+							<textarea placeholder="Intervention"></textarea>
+							
+								
+							
+							<label>Tags</label>
+							<!-- -->
+								<select name="skills" multiple="" class="ui fluid dropdown">
+								  <option value="">Tags</option>
+							  <option value="Informatique">Informatique</option>
+								<option value="Maths">Maths</option>
+								<option value="Physique">Physique</option>
+								<option value="Chimie">Chimie</option>
+								<option value="history">history</option>
+								<option value="geo">geo</option>
+
+								</select>
+							<!-- -->
+						  </div>
+							
+						  <div class="field">
+							<div class="menu"><a class="ui hover button blue">publier</a></div>
+						  </div>
+						</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="ui attached segment">
+					<div class="content">
+					
+						<div class="header" style="display:block;float: left;">
+							<div class="ui button b_nb">93</br>votes</div>
+							<div class="ui button b_nb">65</br>comments</div>
+						
+						</div>
+						
+						<div class="header"  style="font-weight: bold; font-size: 1.2em; line-height: 1.33em;">
+							Consulo howa site li ikhalikom ttab3o chaghaf dyalkom !!!
+						</div>
+						
+					
+					</div>
+					<div class="description" style="float: left;background-color: #EEE;padding: 2px;margin: 2px;">Informatique</div>
+
+					<div class="description" style="text-align: right;">Par Hassan il y a 2 min</div>
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="ui attached segment">
+					<div class="content">
+					
+						<div class="header" style="display:block;float: left;">
+							<div class="ui button b_nb">93</br>votes</div>
+							<div class="ui button b_nb">65</br>comments</div>
+						
+						</div>
+						
+						<div class="header"  style="font-weight: bold; font-size: 1.2em; line-height: 1.33em;">
+							F Consulo imkan likom tfa3lo m3a nass khobara2 !!!
+						</div>
+						
+					
+					</div>
+					<div class="description" style="float: left;background-color: #EEE;padding: 2px;margin: 2px;">Physique</div>
+					<div class="description" style="text-align: right;">Par Hassan il y a 12 min</div>
+					</div>	
+
+
+
+
+					
+					<div class="ui attached segment">
+					<div class="content">
+					
+						<div class="header" style="display:block;float: left;">
+							<div class="ui button b_nb">93</br>votes</div>
+							<div class="ui button b_nb" style="padding: 0.7em; width: 6em;">65</br>comments</div>
+						
+						</div>
+						
+						<div class="header"  style="font-weight: bold; font-size: 1.2em; line-height: 1.33em;">
+							F Consulo imkan likom tfa3lo m3a nass khobara2 !!!
+						</div>
+						
+					
+					</div>
+					<div class="description" style="float: left;background-color: #EEE;padding: 2px;margin: 2px;">Physique</div>
+					<div class="description" style="text-align: right;">Par Hassan il y a 15 min</div>
+					</div>						
+					
+					
+<!--					<div class="ui inverted blue top attached segment">Consulo howa site li ikhalikom ttab3o chaghaf dyalkom !!!</div>
+					<div class="ui bottom attached segment" style="text-align: right;">Par Hassan il y a 5 min</div>
+-->					
+					
+					
+				  </div>
+				  
+				<div class="ui bottom attached tab segment" data-tab="second">
+					plus actif
+					
+					
+					
+					
+				  </div>
+				<div class="ui bottom attached tab segment" data-tab="third">
+					plus visité
+				  </div>
+		
+			</div>
+			
+			
+			
+		</div>
+
+  </div>
+	
+  </div>	
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+<!-- <div class="ui inverted footer vertical segment center">kkk</div> -->
+<div class="ui inverted black footer vertical segment">
+  <div class="ui container">
+    <div class="ui stackable relaxed grid">
+      <div class="eight wide column">
+        <h3 class="ui inverted header">Consulo.ma</h3>
+        <p>Consulo est la plateforme qui va vous aider au cours de votre vie universitaire</p>
+		<!--
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <button type="submit" class="ui teal button">Donate Today</button>
+        </form>
+		-->
+      </div>
+      <div class="four wide right aligned column">
+        <h5 class="ui blue inverted header">Chi7aja</h5>
+        <div class="ui inverted link list">
+          <a class="item" href="#" target="_blank">one</a>
+
+          <a class="disabled item">Myiu</a>
+        </div>
+      </div>
+      <div class="four wide right aligned column">
+        <h5 class="ui blue inverted header">Chi7aja okhra</h5>
+        <div class="ui inverted link list">
+          <a class="item" href="#">1dlkj</a>
+          <a class="item" href="#">ljhkhsdl</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>	
+
+	
+</body>
+</html>
 @extends('app')
  
 @section('content')
     <h2>posts</h2>
+
+
+        @include('posts/create')
+    
+
+
 <div class="tabs">
     <ul class="tab-links">
         
@@ -64,9 +274,7 @@
         </ul>
     @endif
  
-    <p>
-        {!! link_to_route('posts.create', 'Create Post') !!}
-    </p>
+   
 @endsection
 
 

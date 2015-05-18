@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Consulo</title>
+ <link href="{{{ asset('/Semantic/dist/semantic.css') }}}" rel="stylesheet">
+  <link href="{{ asset('/Semantic/dist/semantic.css') }}" rel="stylesheet">
+
+
+
+  
+  <style type="text/css">
+  
+	body{
+		background: none repeat scroll 0% 0% #F7F7F7;
+	}
+
+	.wd{
+		max-width: 1000px;
+	}
+	
+	.ui.button.b_nb{
+		padding: 0.7em;
+		width: 6em;
+	}
+	
+  </style>
+ 
+</head>
+<body>
+
+
+  <script src="resources/assets/Semantic/dist/jquery.js"></script>
+  <script src="resources/js/sc.js"></script>
+  <script src="resources/assets/Semantic/dist/semantic.js"></script>
+	
+	
+	
+	
+	
+  <script type="text/javascript">
+ 
+  </script>
+  
+	<div class="ui tiered nav menu" style="margin-top: 0px;" >
+	  
+		<a class="ui" style="" href="/consulo"><img src="img/logo_header.png"></img></a>
+	<!--	<a class="ui item" href="/semantic-ui-themes">menu01</a>
+		<a class="ui item" href="/semantic-ui-snippets">menu02</a>
+		<a class="ui item" href="/semantic-ui-snippets">menu03</a>
+	-->
+		
+		
+		<div class="right item">
+			<a class="large ui button blue" style="margin-left: 1em;">Inscrivez-vous</a>
+			<a class="large ui button green" style="margin-left: 1em;">Connecter</a>
+		</div>
+	</div>
+
+	
+	
+	
+
+
+
+	
+	<div class="ui stackable responsive grid">
+	
+	<div class="row">
+
+		<div class="three wide column" style="margin-top: -1rem;">
+				
+			<div class="column panel">
+				<div id="list_tags" class="ui blue top inverted attached segment">
+					<p>Informatique</p>
+				</div>
+				<div id="list_tags" class="ui attached segment">
+					<p>math</p>
+				</div>
+				<div id="list_tags" class="ui attached segment">
+					<p>ing</p>
+				</div>
+				<div id="list_tags" class="ui attached segment" onclick="changeClass()">
+					<p>Physique</p>
+				</div>
+				<div id="list_tags" class="ui attached segment">
+					 <p>Chimie</p>
+				</div>
+				<div id="list_tags" class="ui attached segment">
+					<p>Ingenieurie</p>
+				</div>
+				<div id="list_tags" class="ui attached segment">
+					<p>Maths</p>
+				</div>
+				<div id="list_tags" class="ui attached segment">
+					<p>Physique</p>
+				</div>
+				<div id="list_tags" class="ui bottom attached segment">
+					 <p>Chimie</p>
+				</div>
+			</div>
+			
+			
+		</div>
+			<div class="thirteen wide column">
+		<div id="main">
+					
+			
+			
+			<!-- -->
+			
+			
+							
+				<div class="ui top attached tabular menu">
+					<a class="active item" data-tab="first">plus récent</a>
+					<a class="item" data-tab="second">plus actif</a>
+				  </div>
+				<div class="ui bottom attached active tab segment" data-tab="first">
+
+					<div class="ui attached segment">
+						
+						<div class="ui form">
+							
+						  <div class="field">
+						  
+						    <label>Titre</label>
+							<input type="text" placeholder="Titre">
+							
+							<label>Intervention</label>
+							<textarea placeholder="Intervention"></textarea>
+							
+								
+							
+							<label>Tags</label>
+							<!-- -->
+								<select name="skills" multiple="" class="ui fluid dropdown">
+								  <option value="">Tags</option>
+							  <option value="Informatique">Informatique</option>
+								<option value="Maths">Maths</option>
+								<option value="Physique">Physique</option>
+								<option value="Chimie">Chimie</option>
+								<option value="history">history</option>
+								<option value="geo">geo</option>
+
+								</select>
+							<!-- -->
+						  </div>
+							
+						  <div class="field">
+							<div class="menu"><a class="ui hover button blue">publier</a></div>
+						  </div>
+						</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="ui attached segment">
+					<div class="content">
+					
+						<div class="header" style="display:block;float: left;">
+							<div class="ui button b_nb">93</br>votes</div>
+							<div class="ui button b_nb">65</br>comments</div>
+						
+						</div>
+						
+						<div class="header"  style="font-weight: bold; font-size: 1.2em; line-height: 1.33em;">
+							Consulo howa site li ikhalikom ttab3o chaghaf dyalkom !!!
+						</div>
+						
+					
+					</div>
+					<div class="description" style="float: left;background-color: #EEE;padding: 2px;margin: 2px;">Informatique</div>
+
+					<div class="description" style="text-align: right;">Par Hassan il y a 2 min</div>
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="ui attached segment">
+					<div class="content">
+					
+						<div class="header" style="display:block;float: left;">
+							<div class="ui button b_nb">93</br>votes</div>
+							<div class="ui button b_nb">65</br>comments</div>
+						
+						</div>
+						
+						<div class="header"  style="font-weight: bold; font-size: 1.2em; line-height: 1.33em;">
+							F Consulo imkan likom tfa3lo m3a nass khobara2 !!!
+						</div>
+						
+					
+					</div>
+					<div class="description" style="float: left;background-color: #EEE;padding: 2px;margin: 2px;">Physique</div>
+					<div class="description" style="text-align: right;">Par Hassan il y a 12 min</div>
+					</div>	
+
+
+
+
+					
+					<div class="ui attached segment">
+					<div class="content">
+					
+						<div class="header" style="display:block;float: left;">
+							<div class="ui button b_nb">93</br>votes</div>
+							<div class="ui button b_nb" style="padding: 0.7em; width: 6em;">65</br>comments</div>
+						
+						</div>
+						
+						<div class="header"  style="font-weight: bold; font-size: 1.2em; line-height: 1.33em;">
+							F Consulo imkan likom tfa3lo m3a nass khobara2 !!!
+						</div>
+						
+					
+					</div>
+					<div class="description" style="float: left;background-color: #EEE;padding: 2px;margin: 2px;">Physique</div>
+					<div class="description" style="text-align: right;">Par Hassan il y a 15 min</div>
+					</div>						
+					
+					
+<!--					<div class="ui inverted blue top attached segment">Consulo howa site li ikhalikom ttab3o chaghaf dyalkom !!!</div>
+					<div class="ui bottom attached segment" style="text-align: right;">Par Hassan il y a 5 min</div>
+-->					
+					
+					
+				  </div>
+				  
+				<div class="ui bottom attached tab segment" data-tab="second">
+					plus actif
+					
+					
+					
+					
+				  </div>
+				<div class="ui bottom attached tab segment" data-tab="third">
+					plus visité
+				  </div>
+		
+			</div>
+			
+			
+			
+		</div>
+
+  </div>
+	
+  </div>	
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+<!-- <div class="ui inverted footer vertical segment center">kkk</div> -->
+<div class="ui inverted black footer vertical segment">
+  <div class="ui container">
+    <div class="ui stackable relaxed grid">
+      <div class="eight wide column">
+        <h3 class="ui inverted header">Consulo.ma</h3>
+        <p>Consulo est la plateforme qui va vous aider au cours de votre vie universitaire</p>
+		<!--
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <button type="submit" class="ui teal button">Donate Today</button>
+        </form>
+		-->
+      </div>
+      <div class="four wide right aligned column">
+        <h5 class="ui blue inverted header">Chi7aja</h5>
+        <div class="ui inverted link list">
+          <a class="item" href="#" target="_blank">one</a>
+
+          <a class="disabled item">Myiu</a>
+        </div>
+      </div>
+      <div class="four wide right aligned column">
+        <h5 class="ui blue inverted header">Chi7aja okhra</h5>
+        <div class="ui inverted link list">
+          <a class="item" href="#">1dlkj</a>
+          <a class="item" href="#">ljhkhsdl</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>	
+
+	
+</body>
+</html>

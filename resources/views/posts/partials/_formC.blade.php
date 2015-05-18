@@ -1,8 +1,7 @@
 
 
 <div class="form-group">
-    <p>{!! Form::label('body', 'comment:') !!}
-    </p>
+   
     {!! Form::textarea('body') !!}
 
     </div>

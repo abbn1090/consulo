@@ -32,22 +32,24 @@ class PostsController extends Controller {
 	{
 		//
         $tags = Tag::all();
+        $ts = Tag::lists('tag', 'id');
         $posts = Post::all()->sortByDesc(function($post)
 {
     return $post->published_at;
 });
-        return view('posts.index',compact('posts','tags'));
+        return view('posts.index',compact('posts','tags','ts'));
 	}
     
     public function indexbylikes()
 	{
 		//
         $tags = Tag::all();
+        $ts = Tag::lists('tag', 'id');
         $posts = Post::all()->sortByDesc(function($post)
 {
     return $post->likeCount ;//published_at;
 });//::orderBy('published_at', 'asc');;
-        return view('posts.index',compact('posts','tags'));
+        return view('posts.index',compact('posts','tags','ts'));
 	}
     
     
@@ -106,7 +108,7 @@ class PostsController extends Controller {
         $this->validate($request, $this->rules);        
         
 		$posts = new Post($request->all());
-       // $posts->slug = $request->input('name');
+        //$posts->slug = $posts->name;//$request->input('name');
 
 		Auth::user()->posts()->save($posts);
 

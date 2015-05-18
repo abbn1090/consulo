@@ -50,24 +50,27 @@ class TagsController extends Controller {
 	{
 		//  
         $t = $tag;
+        
+        $ts = Tag::lists('tag', 'id');
         $posts = $tag->posts->sortByDesc(function($post)
 {
     return $post->published_at;
 });
         $tags = Tag::all();
-        return view('posts.index',compact('posts','tags','t'));
+        return view('posts.index',compact('posts','tags','t','ts'));
 	}
     
     public function indexbylikes(Tag $tag)
 	{
 		//  
         $t = $tag;
+        $ts = Tag::lists('tag', 'id');
         $posts = $tag->posts->sortByDesc(function($post)
 {
     return $post->likeCount ;//published_at;
 });//::orderBy('published_at', 'asc');;
         $tags = Tag::all();
-        return view('posts.index',compact('posts','tags','t'));
+        return view('posts.index',compact('posts','tags','t','ts'));
 	}
 
 	/**
