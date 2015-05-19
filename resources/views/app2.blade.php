@@ -1,67 +1,123 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
+
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <title>Consulo</title>
+ <link href="{{ asset('Semantic/dist/semantic.css') }}" rel="stylesheet">
+ 
+
+
+  
+  <style type="text/css">
+  
+	body{
+		background: none repeat scroll 0% 0% #F7F7F7;
+	}
+
+	.wd{
+		max-width: 1000px;
+	}
 	
-
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-
-	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
+	.ui.button.b_nb{
+		padding: 0.7em;
+		width: 6em;
+	}
+	
+  </style>
+ 
 </head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle Navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				
-			</div>
+<script src="{{ asset('Semantic/dist/jquery.js') }}" type="text/javascript"></script> 
+    <script src="{{ asset('js/sc.js') }}" type="text/javascript"></script> 
+    <script src="{{ asset('Semantic/dist/semantic.js') }}" type="text/javascript"></script> 
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Home</a></li>
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					@if (Auth::guest())
-						<li><a href="{{ url('/auth/login') }}">Connexion</a></li>
-						<li><a href="{{ url('/auth/register') }}">Inscription</a></li>
-					@else
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/auth/logout') }}">se déconnecter</a></li>
-							</ul>
-						</li>
-					@endif
-				</ul>
-			</div>
-		</div>
-	</nav>
-<table style="width:100%">
-       
-  <tr>
+	
+	
+	
+	
+	
+  <script type="text/javascript">
+ 
+  </script>
+  
+	<div class="ui tiered nav menu" style="margin-top: 0px;" >
+	  
+		<a class="ui" style="" href="/"><img src="{{ asset('img/logo_header.png') }}"></img></a>
+	<!--	<a class="ui item" href="/semantic-ui-themes">menu01</a>
+		<a class="ui item" href="/semantic-ui-snippets">menu02</a>
+		<a class="ui item" href="/semantic-ui-snippets">menu03</a>
+	-->
+		
     
-    <th>
+    
+    
+    
+		
+		<div class="right item">
+            
+            @if (Auth::guest())
+            <a href="{{ url('/auth/register') }}" class="large ui button blue" style="margin-left: 1em;">Inscription</a>
+            <a href="{{ url('/auth/login') }}" class="large ui button green" style="margin-left: 1em;">Connexion</a>
+					@else
+            
+            
+            <a href="#" class="large ui button blue" style="margin-left: 1em;">{{ Auth::user()->name }}</a>
+            <a href="{{ url('/auth/logout') }}" class="large ui button green" style="margin-left: 1em;">se déconnecter</a>
+            
+						
+					@endif
+            
+            
+		</div>
+	</div>
+
+
+	
+	<div class="ui stackable responsive grid">
+	
+	<div class="row">
+
+		
+		
+		
+
         
 	@yield('content')
+        </div>
+</div>
+ 
+<!-- <div class="ui inverted footer vertical segment center">kkk</div> -->
+<div class="ui inverted black footer vertical segment">
+  <div class="ui container">
+    <div class="ui stackable relaxed grid">
+      <div class="eight wide column">
+        <h3 class="ui inverted header">Consulo.ma</h3>
+        <p>Consulo est la plateforme qui va vous aider au cours de votre vie universitaire</p>
+		<!--
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <button type="submit" class="ui teal button">Donate Today</button>
+        </form>
+		-->
+      </div>
+      <div class="four wide right aligned column">
+        <h5 class="ui blue inverted header">Chi7aja</h5>
+        <div class="ui inverted link list">
+          <a class="item" href="#" target="_blank">one</a>
 
-         </th>
-  </tr>
+          <a class="disabled item">Myiu</a>
+        </div>
+      </div>
+      <div class="four wide right aligned column">
+        <h5 class="ui blue inverted header">Chi7aja okhra</h5>
+        <div class="ui inverted link list">
+          <a class="item" href="#">1dlkj</a>
+          <a class="item" href="#">ljhkhsdl</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>	
 
 </table> 
 	<!-- Scripts -->
@@ -69,3 +125,9 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
+
+
+
+

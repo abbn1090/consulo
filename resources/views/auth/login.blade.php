@@ -1,52 +1,58 @@
 @extends('app2')
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-body">
-					@if (count($errors) > 0)
+
+﻿<!DOCTYPE HTML>
+
+      <style type="text/css">
+
+            body{
+                background: none repeat scroll 0% 0% #F7F7F7;
+            }
+            .main.container.cn{
+                max-width: 415px;
+                background-color: rgb(255, 255, 255);
+                padding: 2em;
+                border-radius: 8px;
+                border: 1px solid #D4D4D5;
+                display: block;
+                margin:auto;
+                margin-top: 6em;
+            }
+
+      </style>
+
+    <div class="main container cn">
+
+        <a class="ui" style="" href="/"><img src="{{ asset('img/logo_header.png') }}"></img></a>
+
+            @if (count($errors) > 0)
 						<div class="alert alert-danger">
-                            <strong>Whoops!</strong> Il y a un problème avec votre entrée.<br><br>
-							
+                            <strong>Whoops!</strong> Il y a un problème avec votre entrée.<br><br>							
 						</div>
-					@endif
+            @endif
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <form class="ui form" role="form" method="POST" action="{{ url('/auth/login') }}">
+            
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Addresse E-Mail</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
+            <h4 class="ui dividing header">Authentification</h4>					
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Mot de passe</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
+            <label >Addresse E-Mail</label>
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								
-							</div>
-						</div>
+            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Connexion</button>
+            <label>Mot de passe</label>
 
-							
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+            <input type="password" class="form-control" name="password">
+
+            <div class="ui submit button green" style="margin-top: 1em;">
+
+                <button type="submit" class="btn btn-primary">Connexion</button>
+
+            </div>
+            
+        </form>
+	
+    </div>
 @endsection
