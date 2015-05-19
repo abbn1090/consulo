@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Consulo</title>
+    <title>Consulo 000</title>
     <link href="{{ asset('Semantic/dist/semantic.css') }}" rel="stylesheet">
     
     <style type="text/css">
