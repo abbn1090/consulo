@@ -8,8 +8,7 @@
 
 
 
+
 <div class="form-group">
-    {!! Form::submit($submit_text, ['class'=>'btn primary']) !!}
+    {!! Form::submit($submit_text, ['class'=>'ui hover button blue']) !!}
 </div>
-
-

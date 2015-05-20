@@ -1,28 +1,53 @@
-@extends('app2')
-
-@section('content')
-
 ﻿<!DOCTYPE HTML>
+<html>
 
-      <style type="text/css">
+<head>
+  <meta charset="utf-8" />
+  <title>Consulo</title>
+ 
+  <link href="{{ asset('Semantic/dist/semantic.css') }}" rel="stylesheet">
 
-            body{
-                background: none repeat scroll 0% 0% #F7F7F7;
-            }
-            .main.container.cn{
-                max-width: 415px;
-                background-color: rgb(255, 255, 255);
-                padding: 2em;
-                border-radius: 8px;
-                border: 1px solid #D4D4D5;
-                display: block;
-                margin:auto;
-                margin-top: 6em;
-            }
 
-      </style>
 
-    <div class="main container cn">
+  
+  <style type="text/css">
+  
+	body{
+		background: none repeat scroll 0% 0% #F7F7F7;
+	}
+	.main.container.cn{
+		max-width: 415px;
+		background-color: rgb(255, 255, 255);
+		padding: 2em;
+		border-radius: 8px;
+		border: 1px solid #D4D4D5;
+		display: block;
+		margin:auto;
+		margin-top: 6em;
+	}
+	
+  </style>
+ 
+</head>
+<body>
+
+
+    
+    <script src="{{ URL::asset('Semantic/dist/jquery.js') }}" type="text/javascript"></script> 
+    <script src="{{ URL::asset('js/sc.js') }}" type="text/javascript"></script> 
+    <script src="{{ URL::asset('Semantic/dist/semantic.js') }}" type="text/javascript"></script>
+
+	
+	
+	
+	
+  <script type="text/javascript">
+ 
+  </script>
+  
+
+
+      <div class="main container cn">
 
         <a class="ui" style="" href="/"><img src="{{ asset('img/logo_header.png') }}"></img></a>
 
@@ -56,9 +81,9 @@
             <input type="password" class="form-control" name="password_confirmation">
             
 
-            <div class="ui submit button green" style="margin-top: 1em;">
+            <div style="margin-top: 1em;">
 
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" class="large ui button green">Register</button>
 
             </div>
             
@@ -67,4 +92,7 @@
     </div>
 
 
-@endsection
+	
+</body>
+</html>
+

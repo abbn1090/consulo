@@ -25,6 +25,13 @@
  
 </head>
 <body>
+    
+    {!! HTML::script('Semantic/dist/jquery.js') !!}
+{!! HTML::script('js/sc.js') !!}
+{!! HTML::script('Semantic/dist/semantic.js') !!}
+    
+    <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
+    
     <script src="{{ asset('Semantic/dist/jquery.js') }}" type="text/javascript"></script> 
     <script src="{{ asset('js/sc.js') }}" type="text/javascript"></script> 
     <script src="{{ asset('Semantic/dist/semantic.js') }}" type="text/javascript"></script> 
