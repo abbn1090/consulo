@@ -49,29 +49,27 @@ class TagsController extends Controller {
 	public function show(Tag $tag)
 	{
 		//  
-        $t = $tag;
-        
+        $tags = Tag::all();
         $ts = Tag::lists('tag', 'id');
-        $posts = $tag->posts->sortByDesc(function($post)
+       
+		
+		
+		$postslike =clone $tag->posts->sortByDesc(function($post)
 {
-    return $post->published_at;
+    		return $post->likeCount ;//published_at;
 });
-        $tags = Tag::all();
-        return view('posts.index',compact('posts','tags','t','ts'));
-	}
-    
-    public function indexbylikes(Tag $tag)
-	{
-		//  
-        $t = $tag;
-        $ts = Tag::lists('tag', 'id');
-        $posts = $tag->posts->sortByDesc(function($post)
+		$posts = $tag->posts->sortByDesc(function($post)
 {
-    return $post->likeCount ;//published_at;
-});//::orderBy('published_at', 'asc');;
-        $tags = Tag::all();
-        return view('posts.index',compact('posts','tags','t','ts'));
+			return $post->created_at;
+});
+        
+        return view('posts.index',compact('posts','postslike','tags','ts'));
 	}
+	
+	
+	
+    
+   
 
 	/**
 	 * Show the form for editing the specified resource.

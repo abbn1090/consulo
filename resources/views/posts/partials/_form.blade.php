@@ -1,6 +1,7 @@
 <!-- /resources/views/projects/partials/_form.blade.php -->
 
-    {!! Form::label('name', 'title:') !!}
+ 	<div class="form-group">   
+	 {!! Form::label('name', 'title:') !!}
     {!! Form::text('name') !!}
                 </div>
                 <div class="form-group">
@@ -15,11 +16,27 @@
                 </div>
 
                 <!-- Tags Form Input -->
-                <div class="form-group">
-                    {!! Form::label('tag_list', "Tags:") !!}
-                    {!! Form::select('tag_list[]', $ts, null, ['id' => 'tag_list', 'class' => 'ui fluid dropdown', 'multiple']) !!}
+
+								
+ <div class="form-group">
+                    <label for="tag_list">Tags:</label>
+                    <select id="tag_list" class="ui fluid dropdown" multiple="multiple" name="tag_list[]">
+						@foreach($tags as $tag)
+							 
+          
+                        
+	<option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+						@endforeach
+						
+	 </select>
                 </div>
 
+							<!-- -->
+						  
+
+
+
+</br>
 <div class="form-group">
     {!! Form::submit($submit_text, ['class'=>'ui hover button blue']) !!}
 </div>

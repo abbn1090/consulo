@@ -27,6 +27,11 @@
 		padding: 0.7em;
 		width: 6em;
 	}
+	  
+	#display-success {
+    display:none;
+    color:red;
+}
 	
   </style>
  
@@ -109,29 +114,26 @@
 							
 			
                <div class="ui top attached tabular menu">
-            @if(isset($t))
-                <a href="{{ route('tags.show', [$t->id]) }}" class="active item" data-tab="first">most recent</a> 
-            @else
-                <a href="{{ route('posts.index') }}" class="active item" data-tab="first">most recent</a>
-            @endif
-        
-            @if(isset($t))
-                <a href="{{ route('poststagbylike', [$t->id]) }}" class="item" data-tab="second">most liked</a>
-            @else
-                <a href="{{ route('postsbylike') }}" class="item" data-tab="second">most liked</a>
-            @endif     
+            
+                <a href="#" class="active item" id="first" data-tab="first">most recent</a> 
+           
+                <a href="#" class="item" id="second" data-tab="second">most liked</a>
+                 
 
         </div>   
             
             
             
-            @include('posts/create')
+            
 				
             
             
-            <div class="ui bottom attached active tab segment" data-tab="first">
-
-					
+            <div id="firstdiv" class="ui bottom attached active tab segment" data-tab="first">
+				<h1>first</h1>
+				
+				@if (!Auth::guest())
+				<div>@include('posts/create')</div>
+				@endif		
 					
 					
 					@if ( !$posts->count() )
@@ -157,10 +159,16 @@
 						
 					
 					</div>
-					<div class="description" style="float: left;background-color: #EEE;padding: 2px;margin: 2px;">Informatique</div>
+				@foreach($post->tags as $tag)
+							 
+          
+                        
+				<div class="description" style="float: left;background-color: #EEE;padding: 2px;margin: 2px;">{{ $tag->tag }}</div>
+						@endforeach
+					
 
 					
-                    <div class="description" style="text-align: right;"><p>Posted {{ $post->created_at->diffForHumans() }}</p></div>
+                    <div class="description" style="text-align: right;"><p> {{ $post->created_at->diffForHumans() }} par {{ $post->user->name }} </p></div>
 					</div>
 					
 					@endforeach
@@ -168,32 +176,57 @@
         @endif	
 					
 					
-					
-					
 			
-
-
-
-					
-										
-					
-					
-<!--					<div class="ui inverted blue top attached segment">Consulo howa site li ikhalikom ttab3o chaghaf dyalkom !!!</div>
-					<div class="ui bottom attached segment" style="text-align: right;">Par Hassan il y a 5 min</div>
--->					
 					
 					
 				  </div>
 				  
-				<div class="ui bottom attached tab segment" data-tab="second">
-					plus actif
+				<div id="seconddiv" class="ui bottom attached tab segment" data-tab="second">
+						<h1>second</h1>
+					
+					
+					@if ( !$postslike->count() )
+            You have no posts
+        @else
+            
+                @foreach( $postslike as $postl )
+					
+					
+					<div class="ui attached segment">
+					<div class="content">
+					
+						<div class="header" style="display:block;float: left;">
+							<div class="ui button b_nb">{{ $postl->likeCount }}</br>likes</div>
+							<div class="ui button b_nb">{{ $postl->getNumCommentsStr() }}</div>
+						
+						</div>
+						
+						<div class="header"  style="font-weight: bold; font-size: 1.2em; line-height: 1.33em;">
+							
+                            <a href="{{ route('posts.show', $postl->slug) }}">{{ $postl->name }}</a>
+						
+						</div>
+						
+					
+					</div>
+				@foreach($postl->tags as $tag)
+							 
+          
+                        
+				<div class="description" style="float: left;background-color: #EEE;padding: 2px;margin: 2px;">{{ $tag->tag }}</div>
+						@endforeach
+					
+
+					
+                    <div class="description" style="text-align: right;"><p> {{ $postl->created_at->diffForHumans() }} par {{ $postl->user->name }} </p></div>
+					</div>
+					
+					@endforeach
+            
+        @endif						
 					
 					
 					
-					
-				  </div>
-				<div class="ui bottom attached tab segment" data-tab="third">
-					plus visité
 				  </div>
 		
 			</div>
@@ -258,7 +291,11 @@
   </div>
 </div>	
 
-	
+	<script>
+
+
+
+</script>
 </body>
 </html>
 

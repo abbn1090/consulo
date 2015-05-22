@@ -47,7 +47,9 @@
 		<a class="ui" style="" href="/"><img src="{{ asset('img/logo_header.png') }}"></img></a>
 		
 		<div class="right item">
-            
+			
+		
+            	
             @if (Auth::guest())
                 <a href="{{ url('/auth/register') }}" class="large ui button blue" style="margin-left:      1em;">Inscription</a>
                 <a href="{{ url('/auth/login') }}" class="large ui button green" style="margin-left: 1em;">Connexion</a>
@@ -141,9 +143,19 @@
 
 				<div class="main container">
 					<h1 class="ui dividing header"> {{ $post->name }} </h1>
+				{!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.destroy', $post->slug))) !!}
+                    
+                    @if(Auth::check() && Auth::user()->id == $post->user->id)
+                    {!! link_to_route('posts.edit', 'Edit', array($post->slug), array('class' => '')) !!}
+                            {!! Form::submit('Delete', array('class' => '')) !!}
+                        
+                    {!! Form::close() !!}
+                    
+                    @endif
 				
-				
-				<h3 class="ui header"><a class="author">Hassan</a> <span class="date" style="color: rgb(170, 170, 170); font-size: 0.675em; margin-left: 0.6em;">Today at 3:42PM</span> </h3>
+					
+					
+				<h3 class="ui header"><a class="author">{{ $post->user->name }}</a> <span class="date" style="color: rgb(170, 170, 170); font-size: 0.675em; margin-left: 0.6em;">Today at 3:42PM</span> </h3>
 				  <header>
 					
                     	@unless($post->tags->isEmpty())
@@ -156,6 +168,12 @@
 						@endforeach
 					</h6>
 				@endunless
+					  
+					<p>
+			<a href="{{ route('posts.destroy', [$post->slug]) }}" >delete</a>
+						
+			<a href="{{ route('posts.edit', [$post->slug]) }}" >edit</a>
+			</p>  
 				</header>
 				
 				<div class="metadata">
@@ -207,6 +225,15 @@
       <div class="text">
         <p>{{ $comment->body }}</p>
       </div>
+		<a class="" href="{{ route('posts.comment.destroy', $post->slug,$comment->id) }}"><i class="delete icon"></i></a>
+		{!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.comment.destroy', $post->slug,$comment->id))) !!}
+                    
+                    @if(Auth::check() && Auth::user()->id == $post->user->id)
+                            {!! Form::submit('Delete', array('class' => 'delete icon')) !!}
+                        
+                    {!! Form::close() !!}
+                    
+                    @endif
   
     </div>
 

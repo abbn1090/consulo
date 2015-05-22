@@ -45,7 +45,8 @@
     "require": {
         "lanz/laravel-commentable": "~2.0",
         "illuminate/html":"5.0.*",
-        "rtconner/laravel-likeable": "~1.0.3"
+        "rtconner/laravel-likeable": "~1.0.3",
+		"jenssegers/date":"3.0.*"
         
         
     }

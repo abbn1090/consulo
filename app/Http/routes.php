@@ -21,18 +21,12 @@ Route::model('comments', 'Comment');
 
 
 Route::get('/', 'PostsController@index');
-
+Route::get('/home', 'PostsController@index');
 //Route::put('/post/{Slug}/like', 'PostsController@like');
 
-route::get('/posts/bylikes', array(
-  'as' => 'postsbylike',
-  'uses' => 'PostsController@indexbylikes'
-));
 
-route::get('/tags/{tags}/bylikes', array(
-  'as' => 'poststagbylike',
-  'uses' => 'TagsController@indexbylikes'
-));
+
+
 
 
 route::get('/posts/{posts}/like', array(

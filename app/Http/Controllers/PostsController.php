@@ -35,9 +35,13 @@ class PostsController extends Controller {
         $ts = Tag::lists('tag', 'id');
         $posts = Post::all()->sortByDesc(function($post)
 {
-    return $post->published_at;
+    return $post->created_at;
 });
-        return view('posts.index',compact('posts','tags','ts'));
+		$postslike = Post::all()->sortByDesc(function($post)
+{
+    return $post->likeCount ;//published_at;
+});
+        return view('posts.index',compact('posts','postslike','tags','ts'));
 	}
     
     public function indexbylikes()
@@ -94,9 +98,9 @@ class PostsController extends Controller {
         
     if (Auth::check() && $post->user_id == Auth::id()) {  
      
-    
-		$tags = Tag::lists('tag', 'id');
-		return view('posts.edit', compact('post', 'tags'));
+    $tags = Tag::all();
+        $ts = Tag::lists('tag', 'id');
+		return view('posts.edit', compact('post', 'tags','ts'));
     }else 
         return redirect()->back();//->with('data', ['some kind of data']);
 	}
@@ -114,7 +118,7 @@ class PostsController extends Controller {
 
 		$posts->tags()->attach($request->input('tag_list'));
         
-		return Redirect::route('posts.index')->with('message', 'Post created');
+		return Redirect::route('posts.show', $posts->slug)->with('message', 'Post created');
         
       
     }

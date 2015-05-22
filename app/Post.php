@@ -4,6 +4,9 @@ use Lanz\Commentable\Commentable;
 use Conner\Likeable\LikeableTrait;
 use Illuminate\Database\Eloquent\Model;
 use App\Presenters\DatePresenter;
+use Jenssegers\Date\Date;
+
+
 
 class Post extends Model  {
 
@@ -66,6 +69,12 @@ class Post extends Model  {
 	{
 		$this->attributes['published_at'] = Carbon::createFromFormat('Y-m-d', $date);
 	}
+	
+	public function getCreatedAtAttribute($value)
+	{
+		Date::setLocale('fr');
+		return Date::parse($value);
+	}
 
 
 	public function getTagListAttribute()
@@ -79,10 +88,10 @@ class Post extends Model  {
 
         if ($num == 1)
         {
-          return '1 commentaire';
+          return '1 comment';
         }
 
-        return $num . ' commentaires';
+        return $num . ' comments';
       }
   
     

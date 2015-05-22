@@ -114,9 +114,15 @@ class CommentsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
-		//
-	}
+	
+	public function destroy(Post $post,Comment $comment)
+    {
+		echo "halalalalalalalalalal";
+		echo $comment;
+		
+        $post->comments()->where('id', '=', $comment->id)->delete();
+
+        return Redirect::route('posts.show', $post->slug)->with('message', 'post deleted.');
+    }
 
 }
