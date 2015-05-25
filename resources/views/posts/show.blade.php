@@ -33,268 +33,138 @@
  
 </head>
 <body>
-
-
+	
     <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
-    
     <script src="{{ URL::asset('Semantic/dist/jquery.js') }}" type="text/javascript"></script> 
     <script src="{{ URL::asset('js/sc.js') }}" type="text/javascript"></script> 
     <script src="{{ URL::asset('Semantic/dist/semantic.js') }}" type="text/javascript"></script>
 
-  
-	
-<div class="ui tiered nav menu" style="margin-top: 0px;" >	  
+	<div class="ui tiered nav menu" style="margin-top: 0px;" >	  
 		<a class="ui" style="" href="/"><img src="{{ asset('img/logo_header.png') }}"></img></a>
 		
 		<div class="right item">
-			
-		
-            	
+            
             @if (Auth::guest())
                 <a href="{{ url('/auth/register') }}" class="large ui button blue" style="margin-left:      1em;">Inscription</a>
                 <a href="{{ url('/auth/login') }}" class="large ui button green" style="margin-left: 1em;">Connexion</a>
-            @else
-                        
+            @else      
                 <a href="#" class="large ui button blue" style="margin-left: 1em;">{{ Auth::user()->name }}</a>
-                <a href="{{ url('/auth/logout') }}" class="large ui button green" style="margin-left: 1em;">se déconnecter</a>
-            			
+                <a href="{{ url('/auth/logout') }}" class="large ui button green" style="margin-left: 1em;">se déconnecter</a>	
             @endif
                     
         </div>
 	</div>
-
-	
-	
-	
-
-
-
-	
 	<div class="ui stackable responsive grid">
-	
 	<div class="row">
-
-		
-		
 		<div class="three wide column" style="margin-top: -1rem;">
-				
 			<div class="column panel">
-				
-				
                    @foreach( $tags as $key => $tag ) 
                         @if ($key == 0)
                             <div id="list_tags" class="ui blue top inverted attached segment">
-                            <a href="{{ route('tags.show', [$tag->id]) }}" style="color: white">{{ $tag->tag }}</a>
+                            	<a href="{{ route('tags.show', [$tag->id]) }}" style="color: white">{{ $tag->tag }}</a>
                             </div>
                         @elseif ($key+1 == count($tags))
                         <div id="list_tags" class="ui bottom attached segment">
                             <a href="{{ route('tags.show', [$tag->id]) }}" style="color: black">{{ $tag->tag }}</a>
                         </div>
-                
                         @else
                         <div id="list_tags" class="ui attached segment">
                             <a href="{{ route('tags.show', [$tag->id]) }}" style="color: black">{{ $tag->tag }}</a>
                         </div>
                         @endif
-				    @endforeach
-				
-				
-			
-                    
+				    @endforeach 
               </div>
-		
-			
-			
-			
 		</div>
-			<div class="thirteen wide column">
+	<div class="thirteen wide column">
 		<div id="main">
-					
-			
-			
-			<!-- -->
-			
-			
-			
-			
-			
-			
-			
-			
-                
-              
-			
-				       
-                 
-				  
-	
-				
-				
-         
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
 				<div class="main container">
 					<h1 class="ui dividing header"> {{ $post->name }} </h1>
-				{!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.destroy', $post->slug))) !!}
+					{!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.destroy', $post->slug))) !!}
                     
                     @if(Auth::check() && Auth::user()->id == $post->user->id)
-                    {!! link_to_route('posts.edit', 'Edit', array($post->slug), array('class' => '')) !!}
-                            {!! Form::submit('Delete', array('class' => '')) !!}
-                        
-                    {!! Form::close() !!}
-                    
+                    	{!! link_to_route('posts.edit', 'Edit', array($post->slug), array('class' => '')) !!}
+                        {!! Form::submit('Delete', array('class' => '')) !!}
+                    	{!! Form::close() !!}
                     @endif
-				
-					
 					
 				<h3 class="ui header"><a class="author">{{ $post->user->name }}</a> <span class="date" style="color: rgb(170, 170, 170); font-size: 0.675em; margin-left: 0.6em;">Today at 3:42PM</span> </h3>
-				  <header>
-					
+				 	<header>
                     	@unless($post->tags->isEmpty())
-					<h6>Tags: 
-					
-						@foreach($post->tags as $tag)
-							 
-          
-                        <a href="{{ route('tags.show', [$tag->id]) }}">{{ $tag->tag }}</a>
-						@endforeach
-					</h6>
-				@endunless
-					  
+							<h6>Tags: 
+							@foreach($post->tags as $tag)
+                        		<a href="{{ route('tags.show', [$tag->id]) }}">{{ $tag->tag }}</a>
+							@endforeach
+							</h6>
+						@endunless
+						<p>
+							<a href="{{ route('posts.destroy', [$post->slug]) }}" >delete</a>
+							<a href="{{ route('posts.edit', [$post->slug]) }}" >edit</a>
+						</p>  
+					</header>	
 					<p>
-			<a href="{{ route('posts.destroy', [$post->slug]) }}" >delete</a>
-						
-			<a href="{{ route('posts.edit', [$post->slug]) }}" >edit</a>
-			</p>  
-				</header>
-				
-				<div class="metadata">
-					
-				</div>	
-				<p>
-					{{ $post->content }}
-				</p>
-				<p><a href="#">{{ $post->likeCount }} personnes aiment ça</a></p>
-                <p><a href="#">{{ $post->getNumCommentsStr() }}</a></p>
-				  
-	
-				@if(Auth::check())
-                @if($post->liked(Auth::user()->id))
-                <p><a href="{{ route('postunlike', [$post->slug]) }}">Je n’aime plus</a></p>
-                @else
-                <div class="ui green submit icon button">
-					<img src="img/like.png" style="margin: -6px 6px -6px -6px;"></img><a href="{{ route('postlike', [$post->slug]) }}">J’aime</a>
+						{{ $post->content }}
+					</p>
+					<p><a href="#">{{ $post->likeCount }} personnes aiment ça</a></p>
+                	<p><a href="#">{{ $post->getNumCommentsStr() }}</a></p>
+					@if(Auth::check())
+                		@if($post->liked(Auth::user()->id))
+                			<p><a href="{{ route('postunlike', [$post->slug]) }}">Je n’aime plus</a></p>
+                		@else
+                			<div class="ui green submit icon button">
+							<img src="{{ asset('img/like.png') }}" style="margin: -6px 6px -6px -6px;"></img><a href="{{ route('postlike', [$post->slug]) }}">J’aime</a>
 				</div>
         
-                @endif
-                @endif
-
-	  
-			
-			
-			
-			
+                		@endif
+                	@endif
 			
 			<!-- comment -->	
+					<div class="ui comments">
+  						<h3 class="ui dividing header">commentaires</h3>
+                    	@if (count($post->comments) === 0)
+      						<p>Pas encore de commentaires !</p>
+						@else
+							@foreach ($post->comments as $comment)
+  								<div class="comment">
+										<a class="avatar">
+											<img src="{{ asset('img/phprofil.png') }}"></img>
+										</a>
+										<div class="content">
+										  <a class="author">{{ $comment->user->name }}</a>
+										  <div class="metadata">
+											<span class="date">Yesterday at 12:30AM</span>
+										  </div>
+										  <div class="text">
+											<p>{{ $comment->body }}</p>
+										  </div>
+										<a class="" href="{{ route('posts.comment.destroy', $post->slug,$comment->id) }}"><i class="delete icon"></i></a>
+										{!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.comment.destroy', $post->slug,$comment->id))) !!}
 
-			
-			
-							<div class="ui comments">
-  <h3 class="ui dividing header">commentaires</h3>
-                    @if (count($post->comments) === 0)
-      <p>Pas encore de commentaires !</p>
-    @else
-      @foreach ($post->comments as $comment)
-  <div class="comment">
-    <a class="avatar">
-		<img src="{{ asset('img/phprofil.png') }}"></img>
-    </a>
-    <div class="content">
-      <a class="author">{{ $comment->user->name }}</a>
-      <div class="metadata">
-        <span class="date">Yesterday at 12:30AM</span>
-      </div>
-      <div class="text">
-        <p>{{ $comment->body }}</p>
-      </div>
-		<a class="" href="{{ route('posts.comment.destroy', $post->slug,$comment->id) }}"><i class="delete icon"></i></a>
-		{!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.comment.destroy', $post->slug,$comment->id))) !!}
-                    
-                    @if(Auth::check() && Auth::user()->id == $post->user->id)
-                            {!! Form::submit('Delete', array('class' => 'delete icon')) !!}
-                        
-                    {!! Form::close() !!}
-                    
-                    @endif
-  
-    </div>
+											@if(Auth::check() && Auth::user()->id == $post->user->id)
+												{!! Form::submit('Delete', array('class' => 'delete icon')) !!}
+												{!! Form::close() !!}
+											@endif
+
+									   </div>
 
   </div>
-                    @endforeach
-    @endif
-</div>	
+                    		@endforeach
+    					@endif
+					</div>	
  
-                  <section>
-					  
-					
-  </br>
-  
-    <h3 class="ui dividing header">Laisser un commentaire : </h3>
-         
-    {!! Form::open(array('route' => ['posts.comment.store', $post->slug], 'class' => 'form')) !!}
-       
-        @include('posts/partials/_formC', ['submit_text' => 'commenter'])
-    {!! Form::close() !!}
-     
-  </section>
-</div> 
-			
-			
-			
-			
-			
-				</div>
-				
+                  	<section>			
+						  </br>
+						   <h3 class="ui dividing header">Laisser un commentaire : </h3>
 
-				
-			<!-- -->
+						   {!! Form::open(array('route' => ['posts.comment.store', $post->slug], 'class' => 'form')) !!}
+								@include('posts/partials/_formC', ['submit_text' => 'commenter'])
+						   {!! Form::close() !!}
+  					</section>
+				</div> 
 		</div>
-			
-			
-			
-		</div>
+	</div>
+	</div>
+  	</div>
 
-  </div>
-	
-  </div>	
-  
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
 <!-- <div class="ui inverted footer vertical segment center">kkk</div> -->
 <div class="ui inverted black footer vertical segment">

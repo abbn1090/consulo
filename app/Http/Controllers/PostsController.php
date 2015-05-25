@@ -26,7 +26,9 @@ class PostsController extends Controller {
 		);
 	   }
     protected $rules = [
-                'slug' => ['required'],
+                'name' => ['required'],
+				'content' => ['required'],
+		
         ];
 	public function index()
 	{
@@ -34,29 +36,17 @@ class PostsController extends Controller {
         $tags = Tag::all();
         $ts = Tag::lists('tag', 'id');
         $posts = Post::all()->sortByDesc(function($post)
-{
-    return $post->created_at;
-});
+							{
+								return $post->created_at;
+							});
 		$postslike = Post::all()->sortByDesc(function($post)
-{
-    return $post->likeCount ;//published_at;
-});
+								{
+									return $post->likeCount ;//published_at;
+								});
         return view('posts.index',compact('posts','postslike','tags','ts'));
 	}
     
-    public function indexbylikes()
-	{
-		//
-        $tags = Tag::all();
-        $ts = Tag::lists('tag', 'id');
-        $posts = Post::all()->sortByDesc(function($post)
-{
-    return $post->likeCount ;//published_at;
-});//::orderBy('published_at', 'asc');;
-        return view('posts.index',compact('posts','tags','ts'));
-	}
-    
-    
+
 
 	/**
 	 * Show the form for creating a new resource.
@@ -98,7 +88,7 @@ class PostsController extends Controller {
         
     if (Auth::check() && $post->user_id == Auth::id()) {  
      
-    $tags = Tag::all();
+    	$tags = Tag::all();
         $ts = Tag::lists('tag', 'id');
 		return view('posts.edit', compact('post', 'tags','ts'));
     }else 
@@ -112,20 +102,19 @@ class PostsController extends Controller {
         $this->validate($request, $this->rules);        
         
 		$posts = new Post($request->all());
-        //$posts->slug = $posts->name;//$request->input('name');
+        $posts->slug = $posts->name;//$request->input('name');
 
 		Auth::user()->posts()->save($posts);
 
 		$posts->tags()->attach($request->input('tag_list'));
-        
-		return Redirect::route('posts.show', $posts->slug)->with('message', 'Post created');
-        
-      
+		if(!empty($posts->tags))
+			return Redirect::route('posts.show', $posts->slug)->with('message', 'Post created');
+		else
+			return Redirect::route('posts.index')->with('message', 'please enter tag');
     }
  
     public function update(Post $post, Request $request)
     {
-        
         $posts = Post::where('id', '=', $post->id)->firstOrFail();
 
 		$posts->update($request->all());
@@ -143,14 +132,11 @@ class PostsController extends Controller {
     }
     
      public function like(Post $post)
-    {
-               
+    {      
          $post->like(Auth::user()->id);
          $post->save();
          
         return Redirect::route('posts.show', $post->slug);
-        
-       //  return Redirect::route('posts.index');
     }
     public function unlike(Post $post)
     {
@@ -158,9 +144,7 @@ class PostsController extends Controller {
          $post->unlike(Auth::user()->id);
          $post->save();
          
-        return Redirect::route('posts.show', $post->slug);
-        
-       //  return Redirect::route('posts.index');
+        return Redirect::route('posts.show', $post->slug);  
     }
     
 }

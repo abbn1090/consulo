@@ -19,7 +19,7 @@ class Post extends Model  {
 	 * @var string
 	 */
 	protected $table = 'posts';
-    protected $fillable = ['name','slug', 'content', 'tag_id', 'published_at'];
+    protected $fillable = ['name', 'content', 'tag_id'];
     protected $dates = ['published_at'];
 	/**
 	 * One to Many relation
@@ -50,25 +50,7 @@ class Post extends Model  {
 	{
 		return $this->hasMany('App\Comment');
 	}
-    
-    
-    public function scopePublished($query)
-	{
-		$query->where('published_at', '<=', Carbon::now());
-	}
 
-	
-
-	public function scopeUnpublished($query)
-	{
-		$query->where('published_at', '>', Carbon::now());
-	}
-
-	
-	public function setPublishedAtAttribute($date)
-	{
-		$this->attributes['published_at'] = Carbon::createFromFormat('Y-m-d', $date);
-	}
 	
 	public function getCreatedAtAttribute($value)
 	{

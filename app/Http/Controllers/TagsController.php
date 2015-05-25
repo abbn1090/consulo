@@ -52,8 +52,6 @@ class TagsController extends Controller {
         $tags = Tag::all();
         $ts = Tag::lists('tag', 'id');
        
-		
-		
 		$postslike =clone $tag->posts->sortByDesc(function($post)
 {
     		return $post->likeCount ;//published_at;

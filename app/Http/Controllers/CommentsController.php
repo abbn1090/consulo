@@ -21,12 +21,17 @@ class CommentsController extends Controller {
 	 *
 	 * @return Response
 	 */
+	protected $rules = [
+                'body' => ['required'],
+		
+        ];
     public function __construct(){
 
 		$this->middleware('auth',
 			['except' => ['index', 'show']]
 		);
 	   }
+	
 	public function index(Post $post)
 	{
 		//
@@ -56,7 +61,7 @@ class CommentsController extends Controller {
 		//
        // $this->validate($request, $this->rules);        
         
-	
+	$this->validate($request, $this->rules);    
         
         
       //  $posts = Post::findOrFail($post->id);
@@ -115,12 +120,12 @@ class CommentsController extends Controller {
 	 * @return Response
 	 */
 	
-	public function destroy(Post $post,Comment $comment)
+	public function destroy(Post $post,$id)
     {
-		echo "halalalalalalalalalal";
-		echo $comment;
 		
-        $post->comments()->where('id', '=', $comment->id)->delete();
+		
+		Comment::find($id)->delete();
+	
 
         return Redirect::route('posts.show', $post->slug)->with('message', 'post deleted.');
     }
