@@ -79,7 +79,6 @@
 					<a href="#" class="item" id="second" data-tab="second">most liked</a>
 				</div>   
             	<div id="firstdiv" class="ui bottom attached active tab segment" data-tab="first">
-				<h1>first</h1>
 				
 				@if (!Auth::guest())
 				<div>@include('posts/create')</div>
@@ -112,8 +111,6 @@
 				</div>
 				  
 				<div id="seconddiv" class="ui bottom attached tab segment" data-tab="second">
-						<h1>second</h1>
-					
 					
 					@if ( !$postslike->count() )
             			You have no posts

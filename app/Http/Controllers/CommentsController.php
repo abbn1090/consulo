@@ -129,5 +129,6 @@ class CommentsController extends Controller {
 
         return Redirect::route('posts.show', $post->slug)->with('message', 'post deleted.');
     }
+    
 
 }

@@ -78,17 +78,31 @@
 	<div class="thirteen wide column">
 		<div id="main">
 				<div class="main container">
-					<h1 class="ui dividing header"> {{ $post->name }} </h1>
+					<h1 class="ui  header"> {{ $post->name }} </h1>
+           <h3 class="ui dividing header"><span class="date" style="color: rgb(170, 170, 170); font-size: 0.675em; margin-left: 0.6em;">{{ $post->created_at->diffForHumans() }} par {{ $post->user->name }}</span> 
+
+           || <header>
+                      @unless($post->tags->isEmpty())
+              <h6>Tags: 
+              @foreach($post->tags as $tag)
+                            <a href="{{ route('tags.show', [$tag->id]) }}">{{ $tag->tag }}</a>
+              @endforeach
+              </h6>
+            @endunless
+             
+          </header> 
+
+           </h3>
+         
 					{!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.destroy', $post->slug))) !!}
                     
                     @if(Auth::check() && Auth::user()->id == $post->user->id)
-                    	{!! link_to_route('posts.edit', 'Edit', array($post->slug), array('class' => '')) !!}
-                        {!! Form::submit('Delete', array('class' => '')) !!}
+                    	{!! link_to_route('posts.edit', 'Edit', array($post->slug), array('class' => 'ui hover button green')) !!}
+                        {!! Form::submit('Delete', array('class' => 'ui hover button red')) !!}
                     	{!! Form::close() !!}
                     @endif
 					
-				<h3 class="ui header"><a class="author">{{ $post->user->name }}</a> <span class="date" style="color: rgb(170, 170, 170); font-size: 0.675em; margin-left: 0.6em;">Today at 3:42PM</span> </h3>
-				 	<header>
+					<header>
                     	@unless($post->tags->isEmpty())
 							<h6>Tags: 
 							@foreach($post->tags as $tag)
@@ -96,10 +110,7 @@
 							@endforeach
 							</h6>
 						@endunless
-						<p>
-							<a href="{{ route('posts.destroy', [$post->slug]) }}" >delete</a>
-							<a href="{{ route('posts.edit', [$post->slug]) }}" >edit</a>
-						</p>  
+						 
 					</header>	
 					<p>
 						{{ $post->content }}
@@ -108,7 +119,10 @@
                 	<p><a href="#">{{ $post->getNumCommentsStr() }}</a></p>
 					@if(Auth::check())
                 		@if($post->liked(Auth::user()->id))
-                			<p><a href="{{ route('postunlike', [$post->slug]) }}">Je n’aime plus</a></p>
+                    <div class="ui brown submit icon button">
+              <img src="{{ asset('img/like.png') }}" style="margin: -6px 6px -6px -6px;"></img><a href="{{ route('postunlike', [$post->slug]) }}">Je n’aime plus</a>
+        </div>
+                			
                 		@else
                 			<div class="ui green submit icon button">
 							<img src="{{ asset('img/like.png') }}" style="margin: -6px 6px -6px -6px;"></img><a href="{{ route('postlike', [$post->slug]) }}">J’aime</a>
@@ -136,11 +150,10 @@
 										  <div class="text">
 											<p>{{ $comment->body }}</p>
 										  </div>
-										<a class="" href="{{ route('posts.comment.destroy', $post->slug,$comment->id) }}"><i class="delete icon"></i></a>
 										{!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.comment.destroy', $post->slug,$comment->id))) !!}
 
 											@if(Auth::check() && Auth::user()->id == $post->user->id)
-												{!! Form::submit('Delete', array('class' => 'delete icon')) !!}
+												{!! Form::submit('Delete', array('class' => 'ui hover button red')) !!}
 												{!! Form::close() !!}
 											@endif
 

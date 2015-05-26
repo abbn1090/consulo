@@ -28,7 +28,10 @@ Route::get('/home', 'PostsController@index');
 
 
 
-
+route::post('posts/{posts}/comment/{comment}/delete', array(
+  'as' => 'deleteComment',
+  'uses' => 'CommentsController@destroyComment'
+));
 route::get('/posts/{posts}/like', array(
   'as' => 'postlike',
   'uses' => 'PostsController@like'
