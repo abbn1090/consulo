@@ -79,7 +79,9 @@
 					<a href="#" class="item" id="second" data-tab="second">most liked</a>
 				</div>   
             	<div id="firstdiv" class="ui bottom attached active tab segment" data-tab="first">
-				
+				@if(isset($t))
+        			<div id="tag" style="display: none;">{{$t->tag}}</div>
+        		@endif
 				@if (!Auth::guest())
 				<div>@include('posts/create')</div>
 				@endif		
