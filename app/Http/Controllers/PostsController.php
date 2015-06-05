@@ -28,7 +28,7 @@ class PostsController extends Controller {
     protected $rules = [
                 'name' => ['required'],
 				'content' => ['required'],
-		
+
         ];
 	public function index()
 	{
@@ -45,7 +45,7 @@ class PostsController extends Controller {
 								});
         return view('posts.index',compact('posts','postslike','tags','ts'));
 	}
-    
+
 
 
 	/**
@@ -85,34 +85,42 @@ class PostsController extends Controller {
 	public function edit(Post $post)
 	{
 		//
-        
-    if (Auth::check() && $post->user_id == Auth::id()) {  
-     
+
+    if (Auth::check() && $post->user_id == Auth::id()) {
+
     	$tags = Tag::all();
-        $ts = Tag::lists('tag', 'id');
-		return view('posts.edit', compact('post', 'tags','ts'));
-    }else 
+        $tas = $post->tags;//Tag::lists('tag', 'id');//
+
+		return view('posts.edit', compact('post', 'tags','tas'));
+    }else
         return redirect()->back();//->with('data', ['some kind of data']);
 	}
 
 
 
+
     public function store(Request $request)
     {
-        $this->validate($request, $this->rules);        
-        
+        $this->validate($request, $this->rules);
+
 		$posts = new Post($request->all());
         $posts->slug = $posts->name;//$request->input('name');
+        $tt = $request->input('tag_list');
 
-		Auth::user()->posts()->save($posts);
+        if(empty($tt))
+        return redirect()->back()->withInput()->withErrors("tag missing");//->with('message', 'forgot tag');
+        
+              Auth::user()->posts()->save($posts);
 
-		$posts->tags()->attach($request->input('tag_list'));
-		if(!empty($posts->tags))
+
+
+
+		$posts->tags()->attach($tt);
+
 			return Redirect::route('posts.show', $posts->slug)->with('message', 'Post created');
-		else
-			return Redirect::route('posts.index')->with('message', 'please enter tag');
+
     }
- 
+
     public function update(Post $post, Request $request)
     {
         $posts = Post::where('id', '=', $post->id)->firstOrFail();
@@ -123,28 +131,28 @@ class PostsController extends Controller {
 
         return Redirect::route('posts.show', $post->slug)->with('message', 'post updated.');
     }
- 
+
     public function destroy(Post $post)
     {
         $post->delete();
 
         return Redirect::route('posts.index')->with('message', 'post deleted.');
     }
-    
+
      public function like(Post $post)
-    {      
+    {
          $post->like(Auth::user()->id);
          $post->save();
-         
+
         return Redirect::route('posts.show', $post->slug);
     }
     public function unlike(Post $post)
     {
-               
+
          $post->unlike(Auth::user()->id);
          $post->save();
-         
-        return Redirect::route('posts.show', $post->slug);  
+
+        return Redirect::route('posts.show', $post->slug);
     }
-    
+
 }

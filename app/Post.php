@@ -63,6 +63,16 @@ class Post extends Model  {
 	{
 		return $this->tags->lists('id');
 	}
+	public function inArray(Tag $t)
+	{
+		foreach ($this->tags as $tg) {
+			if ($t->tag === $tag->tag) {
+				return true;
+				# code...
+			}
+			return false;
+		}
+	}
     
      public function getNumCommentsStr()
       {

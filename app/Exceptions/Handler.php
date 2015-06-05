@@ -36,7 +36,9 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
-		return parent::render($request, $e);
+		return redirect()->back()->withInput()->withErrors("change title , this one already existe");//->with('message', 'forgot tag');
+
+		//return parent::render($request, $e);
 	}
 
 }

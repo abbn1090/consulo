@@ -3,6 +3,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use App\Presenters\DatePresenter;
+use Jenssegers\Date\Date;
 
 class Comment extends Model  {
 
@@ -33,6 +34,11 @@ class Comment extends Model  {
 	public function post() 
 	{
 		return $this->belongsTo('App\Post');
+	}
+	public function getCreatedAtAttribute($value)
+	{
+		Date::setLocale('fr');
+		return Date::parse($value);
 	}
 
 }
