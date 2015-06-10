@@ -35,7 +35,7 @@ class PostsController extends Controller {
   	{
   		//
           $sort = $request->input('sort');
-          $sort = $request->input('page');
+          $page = $request->input('page');
           $tags = Tag::all();
           $ts = Tag::lists('tag', 'id');
           $posts = Post::paginate(10)->sortByDesc(function($post)

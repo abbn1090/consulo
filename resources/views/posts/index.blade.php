@@ -58,10 +58,25 @@
 		</div>
 		<div class="thirteen wide column">
 			<div id="main">
-               <div class="ui top attached tabular menu">
-					<a href="#" class="active item" id="first" data-tab="first">most recent</a>
-					<a href="#" class="item" id="second" data-tab="second">most liked</a>
-				</div>
+
+
+        <div class="ui top attached tabular menu">
+
+
+
+          @if(isset($sort)&&($sort === "populaire"))
+
+          <?php $first1 = ""; ?>
+          <?php $second2 = "active"; ?>
+          @else
+           <?php $first1 = "active"; ?>
+           <?php $second2 = ""; ?>
+         @endif
+        <a href="#" class="{{$first1}} item" id="first" data-tab="first">récent</a>
+        <a href="#" class="{{$second2}} item" id="second" data-tab="second">populaire</a>
+        </div>
+
+
             	<div id="firstdiv" class="ui bottom attached active tab segment" data-tab="first">
 				@if(isset($t))
         			<div id="tag" style="display: none;">{{$t->tag}}</div>

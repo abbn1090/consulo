@@ -5,6 +5,12 @@ use App\Http\Controllers\Controller;
 use App\Tag;
 use App\Post;
 
+use Auth;
+use Input;
+use Redirect;
+use Illuminate\Http\Request;
+use Session;
+
 class TagsController extends Controller {
 
 	/**
@@ -13,11 +19,11 @@ class TagsController extends Controller {
 	 * @return Response
 	 */
 
-    
+
     public function index()
 	{
 		//
-       
+
 	}
 
 	/**
@@ -46,29 +52,29 @@ class TagsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show(Tag $tag)
+	public function show(Tag $tag,Request $request)
 	{
-		//  
+		//
         $tags = Tag::all();
         $ts = Tag::lists('tag', 'id');
         $t = $tag;
-       
-		$postslike =clone $tag->posts->sortByDesc(function($post)
+
+		$postslike =clone $tag->posts()->paginate(5)->sortByDesc(function($post)
 {
     		return $post->likeCount ;//published_at;
 });
-		$posts = $tag->posts->sortByDesc(function($post)
+		$posts = $tag->posts()->paginate(5)->sortByDesc(function($post)
 {
 			return $post->created_at;
 });
-        
+
         return view('posts.index',compact('posts','postslike','tags','ts','t'));
 	}
-	
-	
-	
-    
-   
+
+
+
+
+
 
 	/**
 	 * Show the form for editing the specified resource.
