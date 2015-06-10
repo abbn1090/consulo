@@ -42,7 +42,7 @@ route::get('/posts/{posts}/unlike', array(
 ));
 
 Route::bind('tags',function($value, $route) {
-        return App\Tag::whereId($value)->first();
+        return App\Tag::whereTag($value)->first();
 });
 
 Route::bind('posts',function($value, $route) {

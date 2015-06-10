@@ -30,22 +30,24 @@ class PostsController extends Controller {
 				'content' => ['required'],
 
         ];
-	public function index()
-	{
-		//
-        $tags = Tag::all();
-        $ts = Tag::lists('tag', 'id');
-        $posts = Post::all()->sortByDesc(function($post)
-							{
-								return $post->created_at;
-							});
-		$postslike = Post::all()->sortByDesc(function($post)
-								{
-									return $post->likeCount ;//published_at;
-								});
-        return view('posts.index',compact('posts','postslike','tags','ts'));
-	}
 
+  public function index(Request $request)
+  	{
+  		//
+          $sort = $request->input('sort');
+          $sort = $request->input('page');
+          $tags = Tag::all();
+          $ts = Tag::lists('tag', 'id');
+          $posts = Post::paginate(10)->sortByDesc(function($post)
+  							{
+  								return $post->created_at;
+  							});
+  		$postslike = Post::paginate(10)->sortByDesc(function($post)
+  								{
+  									return $post->likeCount ;//published_at;
+  								});
+          return view('posts.index',compact('posts','postslike','tags','ts','sort','page'));
+  	}
 
 
 	/**
@@ -109,7 +111,7 @@ class PostsController extends Controller {
 
         if(empty($tt))
         return redirect()->back()->withInput()->withErrors("tag missing");//->with('message', 'forgot tag');
-        
+
               Auth::user()->posts()->save($posts);
 
 

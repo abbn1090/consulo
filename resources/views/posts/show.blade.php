@@ -94,7 +94,7 @@
 
               @foreach($post->tags as $tag)
               <div class="description" style="float: left;background-color: #EEE;padding: 2px;margin: 2px;">
-                    <a href="{{ route('tags.show', [$tag->id]) }}">{{ $tag->tag }}</a>
+                    <a href="{{ route('tags.show', [$tag->tag]) }}">{{ $tag->tag }}</a>
               </div>
               @endforeach
               </span>
