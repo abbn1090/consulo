@@ -57,6 +57,8 @@ class TagsController extends Controller {
 		//
         $tags = Tag::all();
         $ts = Tag::lists('tag', 'id');
+        $sort = $request->input('sort');
+        $page = $request->input('page');
         $t = $tag;
 
 		$postslike =clone $tag->posts()->paginate(5)->sortByDesc(function($post)
@@ -68,7 +70,7 @@ class TagsController extends Controller {
 			return $post->created_at;
 });
 
-        return view('posts.index',compact('posts','postslike','tags','ts','t'));
+        return view('posts.index',compact('posts','postslike','tags','ts','t','sort','page'));
 	}
 
 

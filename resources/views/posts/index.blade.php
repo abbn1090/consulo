@@ -77,7 +77,7 @@
         </div>
 
 
-            	<div id="firstdiv" class="ui bottom attached active tab segment" data-tab="first">
+            	<div id="firstdiv" class="ui bottom attached {{$first1}} tab segment" data-tab="first">
 				@if(isset($t))
         			<div id="tag" style="display: none;">{{$t->tag}}</div>
         		@endif
@@ -134,7 +134,33 @@
 							</div>
 						@endforeach
         			@endif
-				  </div>
+            </div>
+              <div class="ui attached segment">
+          @if(!isset($page))
+          <?php $page = 1; ?>
+          @endif
+
+
+              @if($page != 1)
+                <?php
+              $pageB = $page-1;
+              echo '<a href="?page='.$pageB.'" class="large ui button blue" style="margin-left: 1em;">précédent</a>';
+              ?>
+              @endif
+
+              @if(isset($posts))
+              <?php
+              $pageN = $page+1;
+
+              echo '<a href="?page='.$pageN.'" class="large ui button blue" style="margin-left: 1em;">suivant</a>';
+              ?>
+              @endif
+
+            </div>
+
+
+
+
 			</div>
 		</div>
 
