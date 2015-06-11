@@ -86,7 +86,7 @@
 				@endif
 
 				@if ( !$posts->count() )
-					You have no posts
+        Woops, Il n'y a pas de posts
         		@else
 
 					@foreach( $posts as $post )
@@ -114,10 +114,10 @@
 				<div id="seconddiv" class="ui bottom attached tab segment" data-tab="second">
 
 					@if ( !$postslike->count() )
-            			You have no posts
+          Woops, Il n'y a pas de posts
 					@else
 						@foreach( $postslike as $postl )
-							<div class="ui attached segment">
+							<div class="ui attached segment">s
 								<div class="content">
 									<div class="header" style="display:block;float: left;">
 										<div class="ui button b_nb">{{ $postl->likeCount }}</br>likes</div>
@@ -133,30 +133,35 @@
 								<div class="description" style="text-align: right;"><p> {{ $postl->created_at->diffForHumans() }} par {{ $postl->user->name }} </p></div>
 							</div>
 						@endforeach
-        			@endif
-            </div>
-              <div class="ui attached segment">
-          @if(!isset($page))
-          <?php $page = 1; ?>
-          @endif
+
+            <div class="ui attached segment">
+        @if(!isset($page))
+        <?php $page = 1; ?>
+        @endif
 
 
-              @if($page != 1)
-                <?php
-              $pageB = $page-1;
-              echo '<a href="?page='.$pageB.'" class="large ui button blue" style="margin-left: 1em;">précédent</a>';
-              ?>
-              @endif
-
-              @if(isset($posts))
+            @if($page != 1)
               <?php
-              $pageN = $page+1;
+            $pageB = $page-1;
+            echo '<a href="?page='.$pageB.'" class="large ui button blue" style="margin-left: 1em;">précédent</a>';
+            ?>
+            @endif
 
-              echo '<a href="?page='.$pageN.'" class="large ui button blue" style="margin-left: 1em;">suivant</a>';
-              ?>
-              @endif
+            @if ( !$posts->count() )
 
+            <?php
+            $pageN = $page+1;
+
+            echo '<a href="?page='.$pageN.'" class="large ui button blue" style="margin-left: 1em;">suivant</a>';
+            ?>
+            @endif
+
+          </div>
+
+
+            @endif
             </div>
+
 
 
 

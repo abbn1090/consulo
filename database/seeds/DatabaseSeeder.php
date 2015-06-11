@@ -20,100 +20,49 @@ class DatabaseSeeder extends Seeder {
 
 
 		User::create([
-			'name' => 'GreatAdmin',
-			'email' => 'admin1@la.fr',
-			'password' => Hash::make('admin'),
-			
+			'name' => 'ab1',
+			'email' => 'ab1@gmail.com',
+			'password' => Hash::make('azerazer'),
+
 		]);
-
-		User::create([
-			'name' => 'GreatRedactor',
-			'email' => 'redac1@la.fr',
-			'password' => Hash::make('redac'),
-			
-			
-			
-		]);
-
-		User::create([
-			'name' => 'Walker',
-			'email' => 'walker1@la.fr',
-			'password' => Hash::make('walker'),
-			
-		]);
-
-		User::create([
-			'name' => 'Slacker',
-			'email' => 'slacker1@la.fr',
-			'password' => Hash::make('slacker'),
-			
-		]);
-
-
-
 
 
 		Tag::create([
-			'tag' => 'Tag1'
+			'tag' => 'Générale'
 		]);
 
 		Tag::create([
-			'tag' => 'Tag2'
+			'tag' => 'Préparation des concours'
+		]);
+
+		Tag::create([
+			'tag' => 'Commerce, gestion, économie'
+		]);
+
+		Tag::create([
+			'tag' => 'Droit, politique'
+		]);
+
+		Tag::create([
+			'tag' => 'Lettres, langues'
+		]);
+
+		Tag::create([
+			'tag' => 'Humaines et sociales'
+		]);
+
+		Tag::create([
+			'tag' => 'Sciences et technologies'
+		]);
+
+		Tag::create([
+			'tag' => 'Santé, soins'
 		]);
 
 
 
-		Post::create([
-           
-			'slug' => 'post-1', 
-            'name' => 'post 1',
-			'content' => $lipsum->getContent(500), 
-			'user_id' => 1,
-            
-            
-		]);
 
 
-
-		Post::create([
-            
-			'slug' => 'post-3', 
-            'name' => 'post 3',
-			'content' => $lipsum->getContent(500), 
-			'user_id' => 1,
-            
-		]);
-
-
-		PostTag::create([
-			'post_id' => 1,
-			'tag_id' => 1
-		]);
-
-		PostTag::create([
-			'post_id' => 2,
-			'tag_id' => 1
-		]);
-
-
-		
-
-	
-
-
-		Comment::create([
-			'content' => $lipsum->getContent(200), 
-			'user_id' => 1,
-			'post_id' => 1
-		]);
-
-		Comment::create([
-			'content' => $lipsum->getContent(200), 
-			'user_id' => 1,
-			'post_id' => 1
-		]);
-
-	
 
 	}
 

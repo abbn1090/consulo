@@ -4,14 +4,14 @@
 <head>
   <meta charset="utf-8" />
   <title>Consulo</title>
- 
+
   <link href="{{ asset('Semantic/dist/semantic.css') }}" rel="stylesheet">
 
 
 
-  
+
   <style type="text/css">
-  
+
 	body{
 		background: none repeat scroll 0% 0% #F7F7F7;
 	}
@@ -25,26 +25,26 @@
 		margin:auto;
 		margin-top: 6em;
 	}
-	
+
   </style>
- 
+
 </head>
 <body>
 
 
-    
-    <script src="{{ URL::asset('Semantic/dist/jquery.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('js/sc.js') }}" type="text/javascript"></script> 
+
+    <script src="{{ URL::asset('Semantic/dist/jquery.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('js/sc.js') }}" type="text/javascript"></script>
     <script src="{{ URL::asset('Semantic/dist/semantic.js') }}" type="text/javascript"></script>
 
-	
-	
-	
-	
+
+
+
+
   <script type="text/javascript">
- 
+
   </script>
-  
+
 
 
       <div class="main container cn">
@@ -54,17 +54,17 @@
             @if (count($errors) > 0)
 						<div class="alert alert-danger">
                             <strong>Whoops!</strong> Il y a un problème avec votre entrée.<br><br>
-							
+
 						</div>
             @endif
 
         <form class="ui form" role="form" method="POST" action="{{ url('/auth/register') }}">
-            
+
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-            <h4 class="ui dividing header">Inscription</h4>		
-            
-            <label >Name</label>
+            <h4 class="ui dividing header">Inscription</h4>
+
+            <label >Nom</label>
 
             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
 
@@ -75,24 +75,26 @@
             <label>Mot de passe</label>
 
             <input type="password" class="form-control" name="password">
-            
-            <label>Mot de passe</label>
+
+            <label>Vérifier mot de passe</label>
 
             <input type="password" class="form-control" name="password_confirmation">
-            
+
+            <label >profession</label>
+
+            <input type="text" class="form-control" name="profession" value="{{ old('profession') }}">
 
             <div style="margin-top: 1em;">
 
-                <button type="submit" class="large ui button green">Register</button>
+                <button type="submit" class="large ui button green">S'inscrire</button>
 
             </div>
-            
+
         </form>
-	
+
     </div>
 
 
-	
+
 </body>
 </html>
-
