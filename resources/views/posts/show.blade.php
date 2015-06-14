@@ -127,7 +127,7 @@
 
 					@if(Auth::check())
 
-          {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.destroy', $post->slug))) !!}
+
                     @if($post->liked(Auth::user()->id))
                     <div class="ui brown submit icon button">
               <img src="{{ asset('img/like.png') }}" style="margin: -9px -7px -6px -9px;"></img><a href="{{ route('postunlike', [$post->slug]) }}">Je n’aime plus</a>
@@ -140,6 +140,7 @@
 
                     @endif
                     @if(Auth::check() && Auth::user()->id == $post->user->id)
+                    {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.destroy', $post->slug))) !!}
                       {!! link_to_route('posts.edit', 'Edit', array($post->slug), array('class' => 'ui hover button green')) !!}
                         {!! Form::submit('Delete', array('class' => 'ui hover button red')) !!}
                       {!! Form::close() !!}
@@ -176,9 +177,10 @@
 										  <a class="author">{{ $comment->user->name }}</a>
 										  <div class="metadata">
 											<span class="date">{{ $comment->created_at->diffForHumans() }}</span>
-                       {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.comment.destroy', $post->slug,$comment->id))) !!}
 
                       @if(Auth::check() && Auth::user()->id == $post->user->id)
+                      {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.comment.destroy', $post->slug,$comment->id))) !!}
+
                         <input class="btn"  value="x" type="submit">
                         {!! Form::close() !!}
                       @endif
