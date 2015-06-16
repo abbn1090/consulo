@@ -95,6 +95,7 @@
   	</div>
 
 <!-- <div class="ui inverted footer vertical segment center">kkk</div> -->
+
 @include('posts/partials/_footer')
 
 

@@ -107,10 +107,7 @@
 
 
 
-					<p>
 
-
-					</p>
 
 					<p>
 						{{ $post->content }}
@@ -121,14 +118,15 @@
                     <div class="ui button b_nb">{{ $post->getNumCommentsStr() }}</div>
           </div>
 
-          </p>
+
 
           <p>
 
 					@if(Auth::check())
 
-
-                    @if($post->liked(Auth::user()->id))
+<table>
+  <tr>
+                  <td>  @if($post->liked(Auth::user()->id))
                     <div class="ui brown submit icon button">
               <img src="{{ asset('img/like.png') }}" style="margin: -9px -7px -6px -9px;"></img><a href="{{ route('postunlike', [$post->slug]) }}">Je n’aime plus</a>
         </div>
@@ -139,12 +137,18 @@
         </div>
 
                     @endif
+                  </td>
+                      <td>
                     @if(Auth::check() && Auth::user()->id == $post->user->id)
+
                     {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.destroy', $post->slug))) !!}
-                      {!! link_to_route('posts.edit', 'Edit', array($post->slug), array('class' => 'ui hover button green')) !!}
-                        {!! Form::submit('Delete', array('class' => 'ui hover button red')) !!}
+                      {!! link_to_route('posts.edit', 'Modifier', array($post->slug), array('class' => 'ui hover button green')) !!}
+                        {!! Form::submit('Supprimer', array('class' => 'ui hover button red')) !!}
                       {!! Form::close() !!}
                     @endif
+                  </td>
+                  </tr>
+                  </table>
           @else
         </br>
 
@@ -178,7 +182,7 @@
 										  <div class="metadata">
 											<span class="date">{{ $comment->created_at->diffForHumans() }}</span>
 
-                      @if(Auth::check() && Auth::user()->id == $post->user->id)
+                      @if(Auth::check() && Auth::user()->id == $comment->user->id)
                       {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('posts.comment.destroy', $post->slug,$comment->id))) !!}
 
                         <input class="btn"  value="x" type="submit">

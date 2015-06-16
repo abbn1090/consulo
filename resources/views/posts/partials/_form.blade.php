@@ -1,11 +1,11 @@
 <!-- /resources/views/projects/partials/_form.blade.php -->
 
 	<div class="form-group">
-			{!! Form::text('name',Input::old('title'),  array('placeholder'=>'title')) !!}
+			{!! Form::text('name',Input::old('title'),  array('placeholder'=>'Titre')) !!}
 	</div></br>
 
 	<div class="form-group">
-			{!! Form::textarea('content',Input::old('content'),  array('placeholder'=>'Content','style' => 'height: 90px')) !!}
+			{!! Form::textarea('content',Input::old('content'),  array('placeholder'=>'Contenu','style' => 'height: 90px')) !!}
 	</div> </br>
 
  	<div class="form-group">

@@ -1,4 +1,7 @@
-<div class="ui inverted black footer vertical segment">
+
+
+<div id="footer" style="position:absolute;bottom:0;width:100%;height:60px;">
+<div class="ui inverted black footer vertical segment" >
   <div class="ui container">
     <div class="ui stackable relaxed grid">
       <div class="eight wide column">
@@ -13,4 +16,5 @@
 
     </div>
   </div>
+</div>
 </div>

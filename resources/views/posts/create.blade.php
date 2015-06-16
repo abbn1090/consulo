@@ -10,11 +10,11 @@
 			@if ($errors->any())
         {{ implode('', $errors->all(':message')) }}
 			@endif
-		
+
 			<div class="ui form">
 					<div class="field">
 							{!! Form::model(new App\Post, ['route' => ['posts.store']]) !!}
-							@include('posts/partials/_form', ['submit_text' => 'Create Post'])
+							@include('posts/partials/_form', ['submit_text' => 'Poster'])
 							{!! Form::close() !!}
 					</div>
 			</div>
