@@ -25,6 +25,50 @@
     display:none;
     color:red;
 	}
+	
+	
+	
+.images{
+	float: left;
+}
+
+.floating{
+	animation-name: floating;
+	-webkit-animation-name: floating;
+
+	animation-duration: 2.5s;	
+	-webkit-animation-duration: 2.5s;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes floating {
+	0% {
+		transform: translateX(0%);	
+	}
+	50% {
+		transform: translateX(9%);	
+	}	
+	100% {
+		transform: translateX(0%);
+	}			
+}
+
+@-webkit-keyframes floating {
+	0% {
+		-webkit-transform: translateX(0%);	
+	}
+	50% {
+		-webkit-transform: translateX(9%);	
+	}	
+	100% {
+		-webkit-transform: translateX(0%);
+	}			
+}
+
+
+}
 
   </style>
 
@@ -83,6 +127,35 @@
         		@endif
 				@if (!Auth::guest())
 				<div>@include('posts/create')</div>
+				@else
+
+
+
+	<div style="background-color: #29abe2; margin: -14px -14px 14px;">
+	<div style="text-align: center; display: block; width: 500px; margin: auto; padding: 30px 0px 0px;">
+		<div class="images"><img  src="{{ asset('img/images_bare/bare_01.png') }}"></img></div>
+		<div class="images"><img class="floating" src="{{ asset('img/images_bare/bare_02.png') }}"></img></div>
+		<div class="images"><img src="{{ asset('img/images_bare/bare_03.png') }}"></img></div>
+		<div class="images"><img class="floating" src="{{ asset('img/images_bare/bare_04.png') }}"></img></div>
+		<div class="images"><img src="{{ asset('img/images_bare/bare_05.png') }}"></img></div>
+		<div style="clear: both;font-size: 24px;">	</div>
+	</div>
+
+	<div style="text-align: center; display: block; width: 500px; margin: auto; padding: 10px 0px 30px;">
+		<div class="images"><a href="{{ url('/auth/register') }}" class=" ui button white" style="margin-left: -14px;">Inscrivez-vous</a></div>
+		<div class="images"><a href="{{ url('/auth/login') }}" class=" ui button white" style="margin-left: 82px;">Postez</a></div>
+		<div class="images"><a href="{{ url('/auth/login') }}" class=" ui button white" style="margin-left: 100px;">Partagez</a></div>
+
+		<div style="clear: both;font-size: 24px;"></div>
+	</div>
+		
+	</div>
+
+
+
+
+
+
 				@endif
 
 				@if ( !$posts->count() )
@@ -117,7 +190,7 @@
           Woops, Il n'y a pas de posts
 					@else
 						@foreach( $postslike as $postl )
-							<div class="ui attached segment">s
+							<div class="ui attached segment">
 								<div class="content">
 									<div class="header" style="display:block;float: left;">
 										<div class="ui button b_nb">{{ $postl->likeCount }}</br>likes</div>
