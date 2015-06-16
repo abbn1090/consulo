@@ -25,9 +25,9 @@
     display:none;
     color:red;
 	}
-	
-	
-	
+
+
+
 .images{
 	float: left;
 }
@@ -36,7 +36,7 @@
 	animation-name: floating;
 	-webkit-animation-name: floating;
 
-	animation-duration: 2.5s;	
+	animation-duration: 2.5s;
 	-webkit-animation-duration: 2.5s;
 
 	animation-iteration-count: infinite;
@@ -45,26 +45,26 @@
 
 @keyframes floating {
 	0% {
-		transform: translateX(0%);	
+		transform: translateX(0%);
 	}
 	50% {
-		transform: translateX(9%);	
-	}	
+		transform: translateX(9%);
+	}
 	100% {
 		transform: translateX(0%);
-	}			
+	}
 }
 
 @-webkit-keyframes floating {
 	0% {
-		-webkit-transform: translateX(0%);	
+		-webkit-transform: translateX(0%);
 	}
 	50% {
-		-webkit-transform: translateX(9%);	
-	}	
+		-webkit-transform: translateX(9%);
+	}
 	100% {
 		-webkit-transform: translateX(0%);
-	}			
+	}
 }
 
 
@@ -148,7 +148,7 @@
 
 		<div style="clear: both;font-size: 24px;"></div>
 	</div>
-		
+
 	</div>
 
 
