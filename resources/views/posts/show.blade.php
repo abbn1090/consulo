@@ -110,7 +110,8 @@
 
 
 					<p>
-						{{ $post->content }}
+          {!! nl2br(e($post->content)) !!}
+
 					</p>
 
           <div class="header" style="display:block;float: left;">
@@ -211,7 +212,7 @@
 
 
 <!-- <div class="ui inverted footer vertical segment center">kkk</div> -->
-@include('posts/partials/_footer')
+<footer>@include('posts/partials/_footer')</footer
 
 
 

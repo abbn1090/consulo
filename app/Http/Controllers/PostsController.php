@@ -106,6 +106,7 @@ class PostsController extends Controller {
         $this->validate($request, $this->rules);
 
 		$posts = new Post($request->all());
+    //$posts->content = nl2br($posts->content);
         $posts->slug = $posts->name;//$request->input('name');
         $tt = $request->input('tag_list');
 
