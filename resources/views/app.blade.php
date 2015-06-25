@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <title>Consulo 000</title>
     <link href="{{ asset('Semantic/dist/semantic.css') }}" rel="stylesheet">
-    
+
     <style type="text/css">
-  
+
         body{
             background: none repeat scroll 0% 0% #F7F7F7;
         }
@@ -20,115 +20,18 @@
             padding: 0.7em;
             width: 6em;
         }
-	
+
     </style>
- 
+
 </head>
 <body>
-    
-    {!! HTML::script('Semantic/dist/jquery.js') !!}
-{!! HTML::script('js/sc.js') !!}
-{!! HTML::script('Semantic/dist/semantic.js') !!}
-    
-    <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
-    
-    <script src="{{ asset('Semantic/dist/jquery.js') }}" type="text/javascript"></script> 
-    <script src="{{ asset('js/sc.js') }}" type="text/javascript"></script> 
-    <script src="{{ asset('Semantic/dist/semantic.js') }}" type="text/javascript"></script> 
-      <script type="text/javascript">
- 
-  </script>
-  
-	<div class="ui tiered nav menu" style="margin-top: 0px;" >	  
-		<a class="ui" style="" href="/"><img src="{{ asset('img/logo_header.png') }}"></img></a>
-		
-		<div class="right item">
-            
-            @if (Auth::guest())
-                <a href="{{ url('/auth/register') }}" class="large ui button blue" style="margin-left:      1em;">Inscription</a>
-                <a href="{{ url('/auth/login') }}" class="large ui button green" style="margin-left: 1em;">Connexion</a>
-            @else
-                        
-                <a href="#" class="large ui button blue" style="margin-left: 1em;">{{ Auth::user()->name }}</a>
-                <a href="{{ url('/auth/logout') }}" class="large ui button green" style="margin-left: 1em;">se déconnecter</a>
-            			
-            @endif
-                    
-        </div>
-	</div>
-	
-	<div class="ui stackable responsive grid">	
-	   <div class="row">
-		  <div class="three wide column" style="margin-top: -1rem;">
-              <div class="column panel">
-                    @foreach( $tags as $tag ) 
-                
-                        <div id="list_tags" class="ui blue top inverted attached segment">
-                            <p><a href="{{ route('tags.show', [$tag->id]) }}">{{ $tag->tag }}</a></p>  
-                        </div>
-				    @endforeach
-              </div>	
-           </div>		
-           <div class="thirteen wide column">
-		<div id="main">
-					
-			
-			
-			<!-- -->
-			
 
-				<div class="main container">
-				 @yield('content')
-							
-				</div>
-				
+<script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
+<script src="{{ URL::asset('Semantic/dist/jquery.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('js/sc.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('Semantic/dist/semantic.js') }}" type="text/javascript"></script>
 
-				
-			<!-- -->
-		</div>
-			
-			
-			
-		</div>
-	      
-           
-        </div>
-    </div>
- 
-<!-- <div class="ui inverted footer vertical segment center">kkk</div> -->
-    <div class="ui inverted black footer vertical segment">
-      <div class="ui container">
-        <div class="ui stackable relaxed grid">
-          <div class="eight wide column">
-            <h3 class="ui inverted header">Consulo.ma</h3>
-            <p>Consulo est la plateforme qui va vous aider au cours de votre vie universitaire</p>
-            <!--
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-              <button type="submit" class="ui teal button">Donate Today</button>
-            </form>
-            -->
-          </div>
-          <div class="four wide right aligned column">
-            <h5 class="ui blue inverted header">Chi7aja</h5>
-            <div class="ui inverted link list">
-              <a class="item" href="#" target="_blank">one</a>
+ @yield('content')
 
-              <a class="disabled item">Myiu</a>
-            </div>
-          </div>
-          <div class="four wide right aligned column">
-            <h5 class="ui blue inverted header">Chi7aja okhra</h5>
-            <div class="ui inverted link list">
-              <a class="item" href="#">1dlkj</a>
-              <a class="item" href="#">ljhkhsdl</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>	
-
-	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-</body>
+	</body>
 </html>
